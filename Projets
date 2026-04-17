@@ -1,0 +1,386 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Projets & Réalisations – CERTA Yohan</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	<style>
+		/* --- Projets liste --- */
+		.projets-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+			gap: 1.2em;
+			margin: 1.5em 0 2em 0;
+		}
+		.projet-card {
+			background: rgba(255,255,255,0.04);
+			border: 1px solid rgba(255,255,255,0.1);
+			border-radius: 6px;
+			padding: 1.2em 1.4em;
+			transition: border-color 0.2s;
+		}
+		.projet-card:hover {
+			border-color: rgba(240,84,84,0.5);
+		}
+		.projet-card .tag {
+			display: inline-block;
+			background: rgba(240,84,84,0.15);
+			border: 1px solid rgba(240,84,84,0.35);
+			border-radius: 3px;
+			padding: 0.15em 0.6em;
+			font-size: 0.75em;
+			text-transform: uppercase;
+			letter-spacing: 0.5px;
+			margin-bottom: 0.6em;
+		}
+		.projet-card h4 {
+			margin: 0.4em 0 0.3em 0;
+			font-size: 1em;
+		}
+		.projet-card p {
+			font-size: 0.85em;
+			margin: 0;
+			opacity: 0.8;
+		}
+
+		/* --- Projets E5 détaillés --- */
+		.projet-detail {
+			background: rgba(255,255,255,0.03);
+			border: 1px solid rgba(255,255,255,0.12);
+			border-left: 4px solid #f05454;
+			border-radius: 6px;
+			padding: 2em;
+			margin-bottom: 2.5em;
+		}
+		.projet-detail h3 {
+			margin-top: 0;
+			color: #ffffff;
+		}
+		.projet-detail .meta {
+			font-size: 0.85em;
+			opacity: 0.7;
+			margin-bottom: 1em;
+		}
+		.competences-list {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.5em;
+			margin: 0.8em 0;
+		}
+		.comp-badge {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.4em;
+			background: rgba(240,84,84,0.12);
+			border: 1px solid rgba(240,84,84,0.4);
+			border-radius: 4px;
+			padding: 0.3em 0.8em;
+			font-size: 0.82em;
+			font-weight: bold;
+		}
+		.comp-badge .comp-code {
+			color: #f05454;
+		}
+		.section-label {
+			font-size: 0.8em;
+			text-transform: uppercase;
+			letter-spacing: 1.5px;
+			color: #f05454;
+			font-weight: bold;
+			margin: 1.2em 0 0.4em 0;
+		}
+		.e5-badge {
+			display: inline-block;
+			background: #f05454;
+			color: white;
+			font-size: 0.75em;
+			font-weight: bold;
+			padding: 0.2em 0.7em;
+			border-radius: 3px;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			margin-left: 0.5em;
+			vertical-align: middle;
+		}
+		hr.major { margin: 3em 0; }
+	</style>
+</head>
+<body class="is-preload">
+
+<div id="wrapper">
+
+	<!-- Header -->
+	<header id="header">
+		<a href="index.html" class="logo"><strong>Portfolio</strong> <span>CERTA Yohan</span></a>
+		<nav>
+			<a href="#menu">Menu</a>
+		</nav>
+	</header>
+
+	<!-- Menu -->
+	<nav id="menu">
+		<ul class="links">
+			<li><a href="index.html">Accueil</a></li>
+			<li><a href="profil.html">Profil</a></li>
+			<li><a href="projets.html">Projets & Réalisations</a></li>
+			<li><a href="tableau.html">Tableau de synthèse</a></li>
+			<li><a href="contact.html">Contact</a></li>
+		</ul>
+	</nav>
+
+	<!-- Main -->
+	<div id="main" class="alt">
+		<section id="one">
+			<div class="inner">
+
+				<header class="major">
+					<h1>Projets & Réalisations</h1>
+				</header>
+
+				<p>Retrouvez ici l'ensemble des travaux pratiques, projets et stages réalisés au cours de mes deux années de BTS SIO SISR. Trois projets sont présentés en détail dans le cadre de l'épreuve E5, couvrant l'ensemble des 6 compétences du référentiel.</p>
+
+				<!-- ===== TOUS LES PROJETS ===== -->
+				<hr class="major" />
+				<h2>Tous les projets réalisés</h2>
+
+				<div class="projets-grid">
+
+					<div class="projet-card">
+						<span class="tag">TP – BTS1</span>
+						<h4>Installation d'un réseau local</h4>
+						<p>Configuration d'un réseau LAN avec adressage IP statique et dynamique (DHCP), routage inter-VLAN.</p>
+					</div>
+
+					<div class="projet-card">
+						<span class="tag">TP – BTS1</span>
+						<h4>Mise en place d'un serveur Active Directory</h4>
+						<p>Installation de Windows Server, création d'un domaine, gestion des utilisateurs et des GPO.</p>
+					</div>
+
+					<div class="projet-card">
+						<span class="tag">TP – BTS1</span>
+						<h4>Configuration de VLAN sur switch Cisco</h4>
+						<p>Segmentation réseau, configuration de trunk ports et de VLAN avec Cisco Packet Tracer.</p>
+					</div>
+
+					<div class="projet-card">
+						<span class="tag">TP – BTS1</span>
+						<h4>Mise en place d'un serveur DHCP/DNS</h4>
+						<p>Configuration des services DHCP et DNS sous Windows Server et sous Linux (ISC-DHCP, Bind9).</p>
+					</div>
+
+					<div class="projet-card">
+						<span class="tag">TP – BTS1</span>
+						<h4>Virtualisation avec VirtualBox</h4>
+						<p>Création et gestion de machines virtuelles, configuration des cartes réseau virtuelles (NAT, Bridge, Host-only).</p>
+					</div>
+
+					<div class="projet-card">
+						<span class="tag">Stage BTS1 – [Entreprise]</span>
+						<h4>[Intitulé mission de stage]</h4>
+						<p>[Courte description de ce que vous avez fait en stage de 1ère année]</p>
+					</div>
+
+					<div class="projet-card">
+						<span class="tag">TP – BTS2</span>
+						<h4>Déploiement d'un pare-feu pfSense</h4>
+						<p>Installation et configuration de pfSense : règles de filtrage, NAT, création de DMZ, tunnel VPN.</p>
+					</div>
+
+					<div class="projet-card">
+						<span class="tag">TP – BTS2</span>
+						<h4>Supervision réseau avec Zabbix</h4>
+						<p>Mise en place d'un serveur de supervision, création d'hôtes, d'items et d'alertes pour surveiller l'infrastructure.</p>
+					</div>
+
+					<div class="projet-card">
+						<span class="tag">TP – BTS2</span>
+						<h4>Scripting PowerShell</h4>
+						<p>Automatisation de tâches d'administration : création d'utilisateurs AD en masse, rapports, sauvegardes planifiées.</p>
+					</div>
+
+					<div class="projet-card">
+						<span class="tag">TP – BTS2</span>
+						<h4>Plan de Reprise d'Activité (PRA)</h4>
+						<p>Analyse des risques, stratégie de sauvegarde, mise en place d'une solution de réplication et tests de restauration.</p>
+					</div>
+
+					<div class="projet-card">
+						<span class="tag">TP – BTS2</span>
+						<h4>Déploiement automatisé (WDS / WSUS)</h4>
+						<p>Déploiement d'images Windows en réseau, gestion des mises à jour via WSUS.</p>
+					</div>
+
+					<div class="projet-card">
+						<span class="tag">Stage BTS2 – [Entreprise]</span>
+						<h4>[Intitulé mission de stage]</h4>
+						<p>[Courte description de ce que vous avez fait en stage de 2ème année]</p>
+					</div>
+
+				</div>
+
+				<!-- ===== 3 PROJETS E5 DÉTAILLÉS ===== -->
+				<hr class="major" />
+				<h2>Projets sélectionnés pour l'épreuve E5 <span class="e5-badge">E5</span></h2>
+				<p>Ces trois projets ont été retenus car ils couvrent collectivement les <strong>6 blocs de compétences</strong> du référentiel BTS SIO SISR. Ils seront présentés et défendus à l'oral devant le jury.</p>
+
+				<!-- ===== PROJET E5 N°1 ===== -->
+				<div class="projet-detail">
+					<h3>Projet 1 – [Titre de votre 1er projet E5] <span class="e5-badge">Projet E5 #1</span></h3>
+					<div class="meta">
+						📅 Période : [Mois AAAA] &nbsp;|&nbsp; 🏢 Contexte : [TP en cours / Stage entreprise / Projet tuteuré] &nbsp;|&nbsp; 🏫 [Établissement ou Entreprise]
+					</div>
+
+					<div class="section-label">Contexte & Objectifs</div>
+					<p>
+						[Décrivez en quelques phrases le contexte de ce projet : pourquoi ce projet a été réalisé, quel était le besoin, dans quel environnement (école, entreprise, client fictif…). Soyez précis car le jury vous posera des questions dessus.]
+					</p>
+
+					<div class="section-label">Environnement technique</div>
+					<p>
+						<strong>Matériels :</strong> [Ex. Switch Cisco Catalyst 2960, routeur, serveurs physiques, postes clients]<br />
+						<strong>Logiciels / OS :</strong> [Ex. Windows Server 2019, Debian 11, VirtualBox 6.1]<br />
+						<strong>Protocoles / Services :</strong> [Ex. DHCP, DNS, Active Directory, VLAN 802.1Q]
+					</p>
+
+					<div class="section-label">Travail réalisé</div>
+					<p>
+						[Décrivez étape par étape ce que vous avez fait. Soyez méthodique :
+						<br />1. [Première étape réalisée]
+						<br />2. [Deuxième étape]
+						<br />3. [...]
+						<br />N'hésitez pas à mentionner les difficultés rencontrées et comment vous les avez résolues.]
+					</p>
+
+					<div class="section-label">Résultats & Livrables</div>
+					<p>
+						[Décrivez ce que vous avez produit/livré : documentation technique, schéma réseau, scripts, rapport de test…]
+					</p>
+
+					<div class="section-label">Compétences couvertes (référentiel BTS SIO SISR)</div>
+					<div class="competences-list">
+						<span class="comp-badge"><span class="comp-code">B1</span> Gestion du patrimoine informatique</span>
+						<span class="comp-badge"><span class="comp-code">B2</span> Réponse aux incidents et demandes</span>
+						<span class="comp-badge"><span class="comp-code">B4</span> Travail en mode projet</span>
+					</div>
+					<p><em>⚠️ Adaptez les compétences cochées selon ce que votre projet couvre réellement.</em></p>
+				</div>
+
+				<!-- ===== PROJET E5 N°2 ===== -->
+				<div class="projet-detail">
+					<h3>Projet 2 – [Titre de votre 2ème projet E5] <span class="e5-badge">Projet E5 #2</span></h3>
+					<div class="meta">
+						📅 Période : [Mois AAAA] &nbsp;|&nbsp; 🏢 Contexte : [TP en cours / Stage entreprise / Projet tuteuré] &nbsp;|&nbsp; 🏫 [Établissement ou Entreprise]
+					</div>
+
+					<div class="section-label">Contexte & Objectifs</div>
+					<p>
+						[Décrivez en quelques phrases le contexte de ce projet.]
+					</p>
+
+					<div class="section-label">Environnement technique</div>
+					<p>
+						<strong>Matériels :</strong> [...]<br />
+						<strong>Logiciels / OS :</strong> [...]<br />
+						<strong>Protocoles / Services :</strong> [...]
+					</p>
+
+					<div class="section-label">Travail réalisé</div>
+					<p>
+						[Décrivez étape par étape ce que vous avez fait.]
+					</p>
+
+					<div class="section-label">Résultats & Livrables</div>
+					<p>
+						[Ce que vous avez produit/livré.]
+					</p>
+
+					<div class="section-label">Compétences couvertes (référentiel BTS SIO SISR)</div>
+					<div class="competences-list">
+						<span class="comp-badge"><span class="comp-code">B3</span> Gestion des infras & sécurité</span>
+						<span class="comp-badge"><span class="comp-code">B5</span> Mise à disposition d'un service informatique</span>
+					</div>
+					<p><em>⚠️ Adaptez les compétences cochées selon ce que votre projet couvre réellement.</em></p>
+				</div>
+
+				<!-- ===== PROJET E5 N°3 ===== -->
+				<div class="projet-detail">
+					<h3>Projet 3 – [Titre de votre 3ème projet E5] <span class="e5-badge">Projet E5 #3</span></h3>
+					<div class="meta">
+						📅 Période : [Mois AAAA] &nbsp;|&nbsp; 🏢 Contexte : [TP en cours / Stage entreprise / Projet tuteuré] &nbsp;|&nbsp; 🏫 [Établissement ou Entreprise]
+					</div>
+
+					<div class="section-label">Contexte & Objectifs</div>
+					<p>
+						[Décrivez en quelques phrases le contexte de ce projet.]
+					</p>
+
+					<div class="section-label">Environnement technique</div>
+					<p>
+						<strong>Matériels :</strong> [...]<br />
+						<strong>Logiciels / OS :</strong> [...]<br />
+						<strong>Protocoles / Services :</strong> [...]
+					</p>
+
+					<div class="section-label">Travail réalisé</div>
+					<p>
+						[Décrivez étape par étape ce que vous avez fait.]
+					</p>
+
+					<div class="section-label">Résultats & Livrables</div>
+					<p>
+						[Ce que vous avez produit/livré.]
+					</p>
+
+					<div class="section-label">Compétences couvertes (référentiel BTS SIO SISR)</div>
+					<div class="competences-list">
+						<span class="comp-badge"><span class="comp-code">B3</span> Gestion des infras & sécurité</span>
+						<span class="comp-badge"><span class="comp-code">B4</span> Travail en mode projet</span>
+						<span class="comp-badge"><span class="comp-code">B6</span> Développement professionnel</span>
+					</div>
+					<p><em>⚠️ Adaptez les compétences cochées selon ce que votre projet couvre réellement.</em></p>
+				</div>
+
+				<!-- Lien tableau -->
+				<div class="box">
+					<p>💡 <strong>Rappel E5 :</strong> Les 6 blocs de compétences (B1 à B6) doivent être couverts collectivement par vos 3 projets sélectionnés. Vérifiez la couverture complète dans le tableau de synthèse.</p>
+				</div>
+
+				<ul class="actions">
+					<li><a href="tableau.html" class="button next">Voir le tableau de synthèse</a></li>
+				</ul>
+
+			</div>
+		</section>
+	</div>
+
+	<!-- Footer -->
+	<footer id="footer">
+		<div class="inner">
+			<ul class="icons">
+				<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+				<li><a href="#" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+				<li><a href="contact.html" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
+			</ul>
+			<ul class="copyright">
+				<li>&copy; CERTA Yohan – BTS SIO SISR</li>
+				<li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+			</ul>
+		</div>
+	</footer>
+
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>
