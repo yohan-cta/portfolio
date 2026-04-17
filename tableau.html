@@ -1,0 +1,324 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Tableau de synthèse – CERTA Yohan</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	<style>
+		/* ===== TABLEAU DE SYNTHÈSE ===== */
+		.tableau-wrapper {
+			overflow-x: auto;
+			margin: 1.5em 0 2.5em 0;
+		}
+		.tableau-competences {
+			width: 100%;
+			border-collapse: collapse;
+			font-size: 0.88em;
+			min-width: 600px;
+		}
+		.tableau-competences th,
+		.tableau-competences td {
+			border: 1px solid rgba(255,255,255,0.12);
+			padding: 0.7em 0.9em;
+			text-align: center;
+			vertical-align: middle;
+		}
+		.tableau-competences thead th {
+			background: rgba(240,84,84,0.18);
+			color: #fff;
+			font-weight: bold;
+			text-transform: uppercase;
+			font-size: 0.78em;
+			letter-spacing: 0.8px;
+		}
+		.tableau-competences thead th.col-projet {
+			background: rgba(240,84,84,0.3);
+		}
+		.tableau-competences tbody tr:nth-child(even) {
+			background: rgba(255,255,255,0.02);
+		}
+		.tableau-competences tbody tr:hover {
+			background: rgba(255,255,255,0.05);
+		}
+		.tableau-competences td.comp-label {
+			text-align: left;
+			font-weight: bold;
+			color: #fff;
+			width: 38%;
+		}
+		.tableau-competences td.comp-code {
+			color: #f05454;
+			font-weight: bold;
+			font-size: 0.85em;
+			white-space: nowrap;
+		}
+		/* Cellules "oui" / "non" */
+		.cell-oui {
+			color: #4ec94e;
+			font-size: 1.2em;
+		}
+		.cell-non {
+			color: rgba(255,255,255,0.2);
+			font-size: 1.1em;
+		}
+		/* Légende */
+		.legende {
+			display: flex;
+			gap: 2em;
+			align-items: center;
+			font-size: 0.85em;
+			margin-bottom: 1.5em;
+		}
+		.legende-item {
+			display: flex;
+			align-items: center;
+			gap: 0.5em;
+		}
+
+		/* ===== DÉTAIL DES COMPÉTENCES ===== */
+		.comp-detail-card {
+			background: rgba(255,255,255,0.03);
+			border: 1px solid rgba(255,255,255,0.1);
+			border-left: 4px solid #f05454;
+			border-radius: 6px;
+			padding: 1.5em 1.8em;
+			margin-bottom: 1.5em;
+		}
+		.comp-detail-card h3 {
+			margin-top: 0;
+			font-size: 1em;
+		}
+		.comp-num {
+			display: inline-block;
+			background: #f05454;
+			color: white;
+			font-weight: bold;
+			padding: 0.2em 0.7em;
+			border-radius: 3px;
+			margin-right: 0.5em;
+			font-size: 0.9em;
+		}
+		.sous-comp {
+			font-size: 0.85em;
+			opacity: 0.8;
+			margin: 0.3em 0 0 0;
+			padding-left: 1em;
+			border-left: 2px solid rgba(240,84,84,0.3);
+		}
+		.projet-ref {
+			display: inline-block;
+			background: rgba(255,255,255,0.08);
+			border-radius: 3px;
+			padding: 0.1em 0.5em;
+			font-size: 0.8em;
+			margin-top: 0.5em;
+		}
+
+		hr.major { margin: 3em 0; }
+	</style>
+</head>
+<body class="is-preload">
+
+<div id="wrapper">
+
+	<!-- Header -->
+	<header id="header">
+		<a href="index.html" class="logo"><strong>Portfolio</strong> <span>CERTA Yohan</span></a>
+		<nav>
+			<a href="#menu">Menu</a>
+		</nav>
+	</header>
+
+	<!-- Menu -->
+	<nav id="menu">
+		<ul class="links">
+			<li><a href="index.html">Accueil</a></li>
+			<li><a href="profil.html">Profil</a></li>
+			<li><a href="projets.html">Projets & Réalisations</a></li>
+			<li><a href="tableau.html">Tableau de synthèse</a></li>
+			<li><a href="contact.html">Contact</a></li>
+		</ul>
+	</nav>
+
+	<!-- Main -->
+	<div id="main" class="alt">
+		<section id="one">
+			<div class="inner">
+
+				<header class="major">
+					<h1>Tableau de synthèse des compétences</h1>
+				</header>
+
+				<p>Ce tableau présente la couverture des <strong>6 blocs de compétences</strong> du référentiel BTS SIO SISR par les trois projets sélectionnés pour l'épreuve E5. Chaque bloc doit être couvert au moins une fois par l'ensemble des trois projets.</p>
+
+				<!-- ===== TABLEAU PRINCIPAL ===== -->
+				<hr class="major" />
+				<h2>Vue d'ensemble – Couverture des compétences</h2>
+
+				<div class="legende">
+					<div class="legende-item"><span class="cell-oui">✔</span> Compétence couverte par ce projet</div>
+					<div class="legende-item"><span class="cell-non">✗</span> Non mobilisée</div>
+				</div>
+
+				<div class="tableau-wrapper">
+					<table class="tableau-competences">
+						<thead>
+							<tr>
+								<th style="text-align:left; width:6%">Code</th>
+								<th style="text-align:left; width:38%">Bloc de compétences</th>
+								<th class="col-projet">Projet 1<br /><small>[Titre court]</small></th>
+								<th class="col-projet">Projet 2<br /><small>[Titre court]</small></th>
+								<th class="col-projet">Projet 3<br /><small>[Titre court]</small></th>
+								<th>Couvert ?</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="comp-code">B1</td>
+								<td class="comp-label">Gestion du patrimoine informatique</td>
+								<td class="cell-oui">✔</td>
+								<td class="cell-non">✗</td>
+								<td class="cell-non">✗</td>
+								<td class="cell-oui">✔</td>
+							</tr>
+							<tr>
+								<td class="comp-code">B2</td>
+								<td class="comp-label">Réponse aux incidents et demandes d'assistance</td>
+								<td class="cell-oui">✔</td>
+								<td class="cell-non">✗</td>
+								<td class="cell-oui">✔</td>
+								<td class="cell-oui">✔</td>
+							</tr>
+							<tr>
+								<td class="comp-code">B3</td>
+								<td class="comp-label">Gestion des infrastructures et de la sécurité (SISR)</td>
+								<td class="cell-non">✗</td>
+								<td class="cell-oui">✔</td>
+								<td class="cell-oui">✔</td>
+								<td class="cell-oui">✔</td>
+							</tr>
+							<tr>
+								<td class="comp-code">B4</td>
+								<td class="comp-label">Travail en mode projet</td>
+								<td class="cell-oui">✔</td>
+								<td class="cell-non">✗</td>
+								<td class="cell-oui">✔</td>
+								<td class="cell-oui">✔</td>
+							</tr>
+							<tr>
+								<td class="comp-code">B5</td>
+								<td class="comp-label">Mise à disposition d'un service informatique</td>
+								<td class="cell-non">✗</td>
+								<td class="cell-oui">✔</td>
+								<td class="cell-non">✗</td>
+								<td class="cell-oui">✔</td>
+							</tr>
+							<tr>
+								<td class="comp-code">B6</td>
+								<td class="comp-label">Organisation du développement professionnel</td>
+								<td class="cell-non">✗</td>
+								<td class="cell-non">✗</td>
+								<td class="cell-oui">✔</td>
+								<td class="cell-oui">✔</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<div class="box">
+					<p>⚠️ <strong>Important :</strong> Le tableau ci-dessus est un exemple. Adaptez les coches (✔/✗) en fonction de vos projets réels. <strong>Les 6 blocs doivent tous être couverts</strong> par l'ensemble de vos 3 projets sélectionnés.</p>
+				</div>
+
+				<!-- ===== DÉTAIL DES 6 COMPÉTENCES ===== -->
+				<hr class="major" />
+				<h2>Détail des 6 blocs de compétences BTS SIO SISR</h2>
+
+				<div class="comp-detail-card">
+					<h3><span class="comp-num">B1</span> Gestion du patrimoine informatique</h3>
+					<p class="sous-comp">
+						Recenser et identifier les ressources numériques &bull; Exploiter des référentiels, normes et standards &bull; Mettre en place et vérifier les niveaux d'habilitation associés à un service &bull; Vérifier les conditions de la continuité d'un service informatique &bull; Gérer des sauvegardes &bull; Vérifier le respect des règles d'utilisation des ressources numériques
+					</p>
+					<div class="projet-ref">🔗 Couvert par : Projet [X]</div>
+				</div>
+
+				<div class="comp-detail-card">
+					<h3><span class="comp-num">B2</span> Réponse aux incidents et demandes d'assistance et d'évolution</h3>
+					<p class="sous-comp">
+						Collecter, suivre et orienter des demandes &bull; Traiter des demandes concernant les services réseau et système &bull; Traiter des demandes concernant les applications &bull; Gérer des incidents
+					</p>
+					<div class="projet-ref">🔗 Couvert par : Projet [X] et Projet [Y]</div>
+				</div>
+
+				<div class="comp-detail-card">
+					<h3><span class="comp-num">B3</span> Gestion des infrastructures et de la sécurité <em style="font-weight:normal;font-size:0.85em">(SISR)</em></h3>
+					<p class="sous-comp">
+						Exploiter des serveurs Windows et Linux &bull; Exploiter des équipements réseau &bull; Déployer et configurer des postes clients &bull; Maintenir et exploiter des solutions de haute disponibilité &bull; Sécuriser les équipements et les usages des utilisateurs &bull; Garantir la disponibilité, l'intégrité et la confidentialité des services et des données
+					</p>
+					<div class="projet-ref">🔗 Couvert par : Projet [X] et Projet [Y]</div>
+				</div>
+
+				<div class="comp-detail-card">
+					<h3><span class="comp-num">B4</span> Travail en mode projet</h3>
+					<p class="sous-comp">
+						Analyser les objectifs et les modalités d'organisation d'un projet &bull; Planifier les activités &bull; Évaluer les indicateurs de suivi d'un projet &bull; Contrôler l'atteinte des objectifs du projet
+					</p>
+					<div class="projet-ref">🔗 Couvert par : Projet [X] et Projet [Y]</div>
+				</div>
+
+				<div class="comp-detail-card">
+					<h3><span class="comp-num">B5</span> Mise à disposition des utilisateurs d'un service informatique</h3>
+					<p class="sous-comp">
+						Réaliser les tests d'intégration et d'acceptation d'un service &bull; Déployer un service &bull; Accompagner les utilisateurs dans la mise en place d'un service &bull; Assurer la formation des utilisateurs
+					</p>
+					<div class="projet-ref">🔗 Couvert par : Projet [X]</div>
+				</div>
+
+				<div class="comp-detail-card">
+					<h3><span class="comp-num">B6</span> Organisation du développement professionnel</h3>
+					<p class="sous-comp">
+						Mettre en place son environnement d'apprentissage personnel &bull; Mettre en œuvre des outils et stratégies de veille informationnelle &bull; Gérer son identité professionnelle &bull; Développer son projet professionnel
+					</p>
+					<div class="projet-ref">🔗 Couvert par : Projet [X]</div>
+				</div>
+
+				<hr class="major" />
+
+				<ul class="actions">
+					<li><a href="projets.html" class="button">← Retour aux projets</a></li>
+					<li><a href="contact.html" class="button next">Contact</a></li>
+				</ul>
+
+			</div>
+		</section>
+	</div>
+
+	<!-- Footer -->
+	<footer id="footer">
+		<div class="inner">
+			<ul class="icons">
+				<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+				<li><a href="#" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+				<li><a href="contact.html" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
+			</ul>
+			<ul class="copyright">
+				<li>&copy; CERTA Yohan – BTS SIO SISR</li>
+				<li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+			</ul>
+		</div>
+	</footer>
+
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>
