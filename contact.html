@@ -1,0 +1,222 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Contact – CERTA Yohan</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	<style>
+		.contact-cards {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+			gap: 1.2em;
+			margin: 1.5em 0 2em 0;
+		}
+		.contact-card {
+			background: rgba(255,255,255,0.04);
+			border: 1px solid rgba(255,255,255,0.1);
+			border-radius: 6px;
+			padding: 1.5em;
+			text-align: center;
+			transition: border-color 0.2s;
+		}
+		.contact-card:hover {
+			border-color: rgba(240,84,84,0.5);
+		}
+		.contact-card .icon-wrap {
+			font-size: 2em;
+			margin-bottom: 0.4em;
+			color: #f05454;
+		}
+		.contact-card h4 {
+			margin: 0.3em 0 0.2em 0;
+			font-size: 0.85em;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			opacity: 0.7;
+		}
+		.contact-card p {
+			margin: 0;
+			font-size: 0.9em;
+		}
+		.contact-card a {
+			color: #fff;
+			border-bottom-color: rgba(255,255,255,0.2);
+		}
+		.contact-card a:hover {
+			color: #f05454;
+		}
+	</style>
+</head>
+<body class="is-preload">
+
+<div id="wrapper">
+
+	<!-- Header -->
+	<header id="header">
+		<a href="index.html" class="logo"><strong>Portfolio</strong> <span>CERTA Yohan</span></a>
+		<nav>
+			<a href="#menu">Menu</a>
+		</nav>
+	</header>
+
+	<!-- Menu -->
+	<nav id="menu">
+		<ul class="links">
+			<li><a href="index.html">Accueil</a></li>
+			<li><a href="profil.html">Profil</a></li>
+			<li><a href="projets.html">Projets & Réalisations</a></li>
+			<li><a href="tableau.html">Tableau de synthèse</a></li>
+			<li><a href="contact.html">Contact</a></li>
+		</ul>
+	</nav>
+
+	<!-- Main -->
+	<div id="main" class="alt">
+		<section id="one">
+			<div class="inner">
+
+				<header class="major">
+					<h1>Contact</h1>
+				</header>
+
+				<p>N'hésitez pas à me contacter pour toute question relative à mon portfolio, à mes compétences ou à mes recherches d'alternance / d'emploi.</p>
+
+				<!-- Cartes de contact -->
+				<div class="contact-cards">
+
+					<div class="contact-card">
+						<div class="icon-wrap">
+							<span class="icon solid fa-envelope"></span>
+						</div>
+						<h4>Email</h4>
+						<p><a href="mailto:votre@email.fr">votre@email.fr</a></p>
+					</div>
+
+					<div class="contact-card">
+						<div class="icon-wrap">
+							<span class="icon solid fa-phone"></span>
+						</div>
+						<h4>Téléphone</h4>
+						<p>[Votre numéro]</p>
+					</div>
+
+					<div class="contact-card">
+						<div class="icon-wrap">
+							<span class="icon brands fa-linkedin-in"></span>
+						</div>
+						<h4>LinkedIn</h4>
+						<p><a href="https://linkedin.com/in/votre-profil" target="_blank">linkedin.com/in/votre-profil</a></p>
+					</div>
+
+					<div class="contact-card">
+						<div class="icon-wrap">
+							<span class="icon brands fa-github"></span>
+						</div>
+						<h4>GitHub</h4>
+						<p><a href="https://github.com/yohan-cta" target="_blank">github.com/yohan-cta</a></p>
+					</div>
+
+				</div>
+
+				<hr class="major" />
+
+				<!-- Formulaire de contact -->
+				<h2>Envoyer un message</h2>
+
+				<div class="split style1">
+					<section>
+						<form method="post" action="#">
+							<div class="fields">
+								<div class="field half">
+									<label for="name">Nom & Prénom</label>
+									<input type="text" name="name" id="name" placeholder="Votre nom" />
+								</div>
+								<div class="field half">
+									<label for="email">Email</label>
+									<input type="email" name="email" id="email" placeholder="votre@email.fr" />
+								</div>
+								<div class="field">
+									<label for="sujet">Sujet</label>
+									<input type="text" name="sujet" id="sujet" placeholder="Objet de votre message" />
+								</div>
+								<div class="field">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" rows="7" placeholder="Votre message..."></textarea>
+								</div>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Envoyer le message" class="primary" /></li>
+								<li><input type="reset" value="Effacer" /></li>
+							</ul>
+						</form>
+					</section>
+
+					<section>
+						<ul class="contact">
+							<li>
+								<h3>Adresse</h3>
+								<span>
+									[Votre ville]<br />
+									[Code postal], [Région]<br />
+									France
+								</span>
+							</li>
+							<li>
+								<h3>Email</h3>
+								<a href="mailto:votre@email.fr">votre@email.fr</a>
+							</li>
+							<li>
+								<h3>Téléphone</h3>
+								<span>[Votre numéro]</span>
+							</li>
+							<li>
+								<h3>Réseaux professionnels</h3>
+								<ul class="icons">
+									<li><a href="https://github.com/yohan-cta" class="icon brands fa-github" target="_blank"><span class="label">GitHub</span></a></li>
+									<li><a href="#" class="icon brands fa-linkedin-in" target="_blank"><span class="label">LinkedIn</span></a></li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+				</div>
+
+				<hr class="major" />
+
+				<ul class="actions">
+					<li><a href="index.html" class="button">← Retour à l'accueil</a></li>
+				</ul>
+
+			</div>
+		</section>
+	</div>
+
+	<!-- Footer -->
+	<footer id="footer">
+		<div class="inner">
+			<ul class="icons">
+				<li><a href="https://github.com/yohan-cta" class="icon brands alt fa-github" target="_blank"><span class="label">GitHub</span></a></li>
+				<li><a href="#" class="icon brands alt fa-linkedin-in" target="_blank"><span class="label">LinkedIn</span></a></li>
+				<li><a href="mailto:votre@email.fr" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
+			</ul>
+			<ul class="copyright">
+				<li>&copy; CERTA Yohan – BTS SIO SISR</li>
+				<li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+			</ul>
+		</div>
+	</footer>
+
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>
