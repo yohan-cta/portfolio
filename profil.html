@@ -1,222 +1,303 @@
-
 <!DOCTYPE HTML>
-<!--
-	Forty by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
-	<head>
-		<title>Yohan Certa</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<head>
+	<title>Profil – CERTA Yohan</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	<style>
+		.timeline {
+			position: relative;
+			padding-left: 2em;
+			border-left: 3px solid #f05454;
+			margin: 2em 0;
+		}
+		.timeline-item {
+			margin-bottom: 2em;
+			position: relative;
+		}
+		.timeline-item::before {
+			content: '';
+			width: 14px;
+			height: 14px;
+			background: #f05454;
+			border-radius: 50%;
+			position: absolute;
+			left: -2.55em;
+			top: 0.3em;
+		}
+		.timeline-year {
+			font-weight: bold;
+			color: #f05454;
+			font-size: 0.9em;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+		}
+		.timeline-title {
+			font-size: 1.1em;
+			font-weight: bold;
+			margin: 0.2em 0;
+		}
+		.timeline-desc {
+			font-size: 0.9em;
+			opacity: 0.85;
+		}
+		.competence-badge {
+			display: inline-block;
+			background: rgba(240,84,84,0.15);
+			border: 1px solid rgba(240,84,84,0.4);
+			border-radius: 4px;
+			padding: 0.3em 0.8em;
+			margin: 0.2em;
+			font-size: 0.85em;
+		}
+		.info-grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 1.5em;
+			margin: 1.5em 0;
+		}
+		.info-card {
+			background: rgba(255,255,255,0.03);
+			border: 1px solid rgba(255,255,255,0.1);
+			border-radius: 6px;
+			padding: 1.2em;
+		}
+		.info-card h4 {
+			margin: 0 0 0.5em 0;
+			color: #f05454;
+			font-size: 0.85em;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+		}
+		@media (max-width: 600px) {
+			.info-grid { grid-template-columns: 1fr; }
+		}
+	</style>
+</head>
+<body class="is-preload">
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+<div id="wrapper">
 
-				<!-- Header -->
-				<!-- Note: The "styleN" class below should match that of the banner element. -->
-					<header id="header" class="alt style2">
-						<a href="index.html" class="logo"><strong>Portfolio</strong> <span>CERTA Yohan</span></a>
-						<nav>
-							<a href="#menu">Menu</a>
-						</nav>
-					</header>
+	<!-- Header -->
+	<header id="header">
+		<a href="index.html" class="logo"><strong>Portfolio</strong> <span>CERTA Yohan</span></a>
+		<nav>
+			<a href="#menu">Menu</a>
+		</nav>
+	</header>
 
-				<!-- Menu -->
-					<nav id="menu">
-						<ul class="links">
-							<li><a href="index.html">Home</a></li>
-							<li><a href="landing.html">Landing</a></li>
-							<li><a href="generic.html">Generic</a></li>
-							<li><a href="elements.html">Elements</a></li>
-						</ul>
-						<ul class="actions stacked">
-							<li><a href="#" class="button primary fit">Get Started</a></li>
-							<li><a href="#" class="button fit">Log In</a></li>
-						</ul>
-					</nav>
+	<!-- Menu -->
+	<nav id="menu">
+		<ul class="links">
+			<li><a href="index.html">Accueil</a></li>
+			<li><a href="profil.html">Profil</a></li>
+			<li><a href="projets.html">Projets & Réalisations</a></li>
+			<li><a href="tableau.html">Tableau de synthèse</a></li>
+			<li><a href="contact.html">Contact</a></li>
+		</ul>
+	</nav>
 
-				<!-- Banner -->
-				<!-- Note: The "styleN" class below should match that of the header element. -->
-					<section id="banner" class="style2">
-						<div class="inner">
-							<span class="image">
-								<img src="images/pic07.jpg" alt="" />
-							</span>
-							<header class="major">
-								<h1>Profil</h1>
-							</header>
-							<div class="content">
-								<p>Étudiant bts2 sio, travail a temps partiel, cv, linkedin</p>
-							</div>
+	<!-- Main -->
+	<div id="main" class="alt">
+
+		<!-- Banner -->
+		<section id="one">
+			<div class="inner">
+
+				<header class="major">
+					<h1>Mon Profil</h1>
+				</header>
+
+				<!-- Infos personnelles -->
+				<div class="info-grid">
+					<div class="info-card">
+						<h4>👤 Identité</h4>
+						<strong>CERTA Yohan</strong><br />
+						Né le : [JJ/MM/AAAA]<br />
+						Nationalité : Française
+					</div>
+					<div class="info-card">
+						<h4>📍 Localisation</h4>
+						[Votre ville]<br />
+						[Code postal]<br />
+						[Région]
+					</div>
+					<div class="info-card">
+						<h4>📞 Contact</h4>
+						[Votre numéro]<br />
+						<a href="mailto:votre@email.fr">votre@email.fr</a>
+					</div>
+					<div class="info-card">
+						<h4>🎓 Formation actuelle</h4>
+						BTS SIO – option SISR<br />
+						[Nom de votre lycée/établissement]<br />
+						2023 – 2025
+					</div>
+				</div>
+
+				<hr class="major" />
+
+				<!-- Présentation -->
+				<h2>Présentation</h2>
+				<p>
+					Étudiant en deuxième année de BTS Services Informatiques aux Organisations, option Solutions d'Infrastructure, Systèmes et Réseaux (SISR), je me passionne pour l'administration des systèmes, la gestion des réseaux et la sécurité informatique. Au cours de ces deux années de formation, j'ai pu développer des compétences solides aussi bien en environnement Windows Server qu'en Linux, ainsi que dans la configuration et la supervision d'équipements réseau.
+				</p>
+				<p>
+					[Ajoutez ici quelques lignes personnelles : vos centres d'intérêt, ce qui vous attire dans l'IT, vos projets d'avenir…]
+				</p>
+
+				<hr class="major" />
+
+				<!-- Parcours scolaire -->
+				<h2>Parcours de formation</h2>
+
+				<div class="timeline">
+
+					<div class="timeline-item">
+						<div class="timeline-year">2023 – 2025</div>
+						<div class="timeline-title">BTS SIO – option SISR</div>
+						<div class="timeline-desc">
+							[Nom de l'établissement] – [Ville]<br />
+							Formation aux solutions d'infrastructure, systèmes et réseaux. Stage de 5 semaines en entreprise en 1ère et 2ème année.
 						</div>
-					</section>
-
-				<!-- Main -->
-					<div id="main">
-
-						<!-- One -->
-							<section id="one">
-								<div class="inner">
-									<header class="major">
-										<h2>Sed amet aliquam</h2>
-									</header>
-									<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna.</p>
-								</div>
-							</section>
-
-						<!-- Two -->
-							<section id="two" class="spotlights">
-								<section>
-									<a href="generic.html" class="image">
-										<img src="images/pic08.jpg" alt="" data-position="center center" />
-									</a>
-									<div class="content">
-										<div class="inner">
-											<header class="major">
-												<h3>Orci maecenas</h3>
-											</header>
-											<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.</p>
-											<ul class="actions">
-												<li><a href="generic.html" class="button">Learn more</a></li>
-											</ul>
-										</div>
-									</div>
-								</section>
-								<section>
-									<a href="generic.html" class="image">
-										<img src="images/pic09.jpg" alt="" data-position="top center" />
-									</a>
-									<div class="content">
-										<div class="inner">
-											<header class="major">
-												<h3>Rhoncus magna</h3>
-											</header>
-											<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.</p>
-											<ul class="actions">
-												<li><a href="generic.html" class="button">Learn more</a></li>
-											</ul>
-										</div>
-									</div>
-								</section>
-								<section>
-									<a href="generic.html" class="image">
-										<img src="images/pic10.jpg" alt="" data-position="25% 25%" />
-									</a>
-									<div class="content">
-										<div class="inner">
-											<header class="major">
-												<h3>Sed nunc ligula</h3>
-											</header>
-											<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.</p>
-											<ul class="actions">
-												<li><a href="generic.html" class="button">Learn more</a></li>
-											</ul>
-										</div>
-									</div>
-								</section>
-							</section>
-
-						<!-- Three -->
-							<section id="three">
-								<div class="inner">
-									<header class="major">
-										<h2>Massa libero</h2>
-									</header>
-									<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet pharetra et feugiat tempus.</p>
-									<ul class="actions">
-										<li><a href="generic.html" class="button next">Get Started</a></li>
-									</ul>
-								</div>
-							</section>
-
 					</div>
 
-				<!-- Contact -->
-					<section id="contact">
-						<div class="inner">
-							<section>
-								<form method="post" action="#">
-									<div class="fields">
-										<div class="field half">
-											<label for="name">Name</label>
-											<input type="text" name="name" id="name" />
-										</div>
-										<div class="field half">
-											<label for="email">Email</label>
-											<input type="text" name="email" id="email" />
-										</div>
-										<div class="field">
-											<label for="message">Message</label>
-											<textarea name="message" id="message" rows="6"></textarea>
-										</div>
-									</div>
-									<ul class="actions">
-										<li><input type="submit" value="Send Message" class="primary" /></li>
-										<li><input type="reset" value="Clear" /></li>
-									</ul>
-								</form>
-							</section>
-							<section class="split">
-								<section>
-									<div class="contact-method">
-										<span class="icon solid alt fa-envelope"></span>
-										<h3>Email</h3>
-										<a href="#">information@untitled.tld</a>
-									</div>
-								</section>
-								<section>
-									<div class="contact-method">
-										<span class="icon solid alt fa-phone"></span>
-										<h3>Phone</h3>
-										<span>(000) 000-0000 x12387</span>
-									</div>
-								</section>
-								<section>
-									<div class="contact-method">
-										<span class="icon solid alt fa-home"></span>
-										<h3>Address</h3>
-										<span>1234 Somewhere Road #5432<br />
-										Nashville, TN 00000<br />
-										United States of America</span>
-									</div>
-								</section>
-							</section>
+					<div class="timeline-item">
+						<div class="timeline-year">2022 – 2023</div>
+						<div class="timeline-title">Baccalauréat [Général / Technologique / Pro]</div>
+						<div class="timeline-desc">
+							[Nom du lycée] – [Ville]<br />
+							Spécialités : [Ex. NSI, Mathématiques…] – Mention : [Mention obtenue]
 						</div>
-					</section>
+					</div>
 
-				<!-- Footer -->
-					<footer id="footer">
-						<div class="inner">
-							<ul class="icons">
-								<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
-								<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
-								<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-								<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-								<li><a href="#" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-							</ul>
-							<ul class="copyright">
-								<li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
-							</ul>
+					<div class="timeline-item">
+						<div class="timeline-year">Avant 2022</div>
+						<div class="timeline-title">Collège & Lycée</div>
+						<div class="timeline-desc">
+							[Nom de l'établissement] – [Ville]
 						</div>
-					</footer>
+					</div>
+
+				</div>
+
+				<hr class="major" />
+
+				<!-- Stages -->
+				<h2>Expériences professionnelles & Stages</h2>
+
+				<div class="timeline">
+
+					<div class="timeline-item">
+						<div class="timeline-year">Stage BTS2 – [Mois] 2025</div>
+						<div class="timeline-title">Stage en entreprise – [Nom de l'entreprise]</div>
+						<div class="timeline-desc">
+							[Secteur / Domaine] – [Ville]<br />
+							Missions : [Décrivez vos missions : administration serveur, support utilisateurs, câblage réseau, configuration switch/routeur, etc.]
+						</div>
+					</div>
+
+					<div class="timeline-item">
+						<div class="timeline-year">Stage BTS1 – [Mois] 2024</div>
+						<div class="timeline-title">Stage en entreprise – [Nom de l'entreprise]</div>
+						<div class="timeline-desc">
+							[Secteur / Domaine] – [Ville]<br />
+							Missions : [Décrivez vos missions]
+						</div>
+					</div>
+
+				</div>
+
+				<hr class="major" />
+
+				<!-- Compétences techniques -->
+				<h2>Compétences techniques</h2>
+
+				<h3>Systèmes</h3>
+				<p>
+					<span class="competence-badge">Windows Server 2019/2022</span>
+					<span class="competence-badge">Active Directory</span>
+					<span class="competence-badge">Linux (Debian / Ubuntu)</span>
+					<span class="competence-badge">Virtualisation (VirtualBox / VMware)</span>
+					<span class="competence-badge">Hyper-V</span>
+				</p>
+
+				<h3>Réseaux</h3>
+				<p>
+					<span class="competence-badge">TCP/IP – DHCP – DNS</span>
+					<span class="competence-badge">VLAN – Routage</span>
+					<span class="competence-badge">Cisco Packet Tracer</span>
+					<span class="competence-badge">Pare-feu (pfSense / Windows Firewall)</span>
+					<span class="competence-badge">VPN</span>
+					<span class="competence-badge">SSH / RDP</span>
+				</p>
+
+				<h3>Sécurité & Supervision</h3>
+				<p>
+					<span class="competence-badge">Sauvegarde & PRA</span>
+					<span class="competence-badge">Supervision réseau (PRTG / Zabbix)</span>
+					<span class="competence-badge">GPO (Group Policy)</span>
+					<span class="competence-badge">Antivirus / Sécurité endpoint</span>
+				</p>
+
+				<h3>Outils & Divers</h3>
+				<p>
+					<span class="competence-badge">PowerShell</span>
+					<span class="competence-badge">Bash</span>
+					<span class="competence-badge">HTML / CSS (notions)</span>
+					<span class="competence-badge">GLPI / Tickets</span>
+					<span class="competence-badge">Pack Office</span>
+					<span class="competence-badge">Markdown / Documentation</span>
+				</p>
+
+				<hr class="major" />
+
+				<!-- CV téléchargeable -->
+				<h2>Curriculum Vitae</h2>
+				<p>Retrouvez l'ensemble de mon parcours dans mon CV téléchargeable :</p>
+				<ul class="actions">
+					<li><a href="assets/cv/CV_CERTA_Yohan.pdf" class="button icon solid fa-download" target="_blank">Télécharger mon CV (PDF)</a></li>
+				</ul>
+				<p><em>À noter : pensez à placer votre CV au format PDF dans le dossier <code>assets/cv/</code></em></p>
+
+				<hr class="major" />
+
+				<ul class="actions">
+					<li><a href="projets.html" class="button next">Voir mes projets</a></li>
+				</ul>
 
 			</div>
+		</section>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+	</div>
 
-	</body>
+	<!-- Footer -->
+	<footer id="footer">
+		<div class="inner">
+			<ul class="icons">
+				<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+				<li><a href="#" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+				<li><a href="contact.html" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
+			</ul>
+			<ul class="copyright">
+				<li>&copy; CERTA Yohan – BTS SIO SISR</li>
+				<li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+			</ul>
+		</div>
+	</footer>
+
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
 </html>
-
