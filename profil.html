@@ -1,303 +1,188 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-	<title>Profil – CERTA Yohan</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="assets/css/main.css" />
-	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	<style>
-		.timeline {
-			position: relative;
-			padding-left: 2em;
-			border-left: 3px solid #f05454;
-			margin: 2em 0;
-		}
-		.timeline-item {
-			margin-bottom: 2em;
-			position: relative;
-		}
-		.timeline-item::before {
-			content: '';
-			width: 14px;
-			height: 14px;
-			background: #f05454;
-			border-radius: 50%;
-			position: absolute;
-			left: -2.55em;
-			top: 0.3em;
-		}
-		.timeline-year {
-			font-weight: bold;
-			color: #f05454;
-			font-size: 0.9em;
-			text-transform: uppercase;
-			letter-spacing: 1px;
-		}
-		.timeline-title {
-			font-size: 1.1em;
-			font-weight: bold;
-			margin: 0.2em 0;
-		}
-		.timeline-desc {
-			font-size: 0.9em;
-			opacity: 0.85;
-		}
-		.competence-badge {
-			display: inline-block;
-			background: rgba(240,84,84,0.15);
-			border: 1px solid rgba(240,84,84,0.4);
-			border-radius: 4px;
-			padding: 0.3em 0.8em;
-			margin: 0.2em;
-			font-size: 0.85em;
-		}
-		.info-grid {
-			display: grid;
-			grid-template-columns: 1fr 1fr;
-			gap: 1.5em;
-			margin: 1.5em 0;
-		}
-		.info-card {
-			background: rgba(255,255,255,0.03);
-			border: 1px solid rgba(255,255,255,0.1);
-			border-radius: 6px;
-			padding: 1.2em;
-		}
-		.info-card h4 {
-			margin: 0 0 0.5em 0;
-			color: #f05454;
-			font-size: 0.85em;
-			text-transform: uppercase;
-			letter-spacing: 1px;
-		}
-		@media (max-width: 600px) {
-			.info-grid { grid-template-columns: 1fr; }
-		}
-	</style>
-</head>
-<body class="is-preload">
+	<head>
+		<title>Profil — CERTA Yohan</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			.info-table { width: 100%; border-collapse: collapse; margin-bottom: 1.5em; }
+			.info-table td { padding: 0.5em 0.8em; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 0.9em; }
+			.info-table td:first-child { color: rgba(255,255,255,0.5); width: 40%; }
+			.info-table td:last-child { font-weight: 600; }
+			.skill-tags { display: flex; flex-wrap: wrap; gap: 0.5em; margin-bottom: 1.5em; }
+			.skill-tag { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15); padding: 0.3em 0.75em; border-radius: 4px; font-size: 0.8em; font-family: monospace; }
+			.tl-item { display: flex; gap: 1.2em; margin-bottom: 1.2em; }
+			.tl-dot { width: 12px; height: 12px; border-radius: 50%; background: #fff; flex-shrink: 0; margin-top: 0.35em; }
+			.tl-date { font-size: 0.75em; opacity: 0.5; margin-bottom: 0.15em; font-family: monospace; }
+			.tl-title { font-weight: 700; margin-bottom: 0.1em; }
+			.tl-desc { font-size: 0.85em; opacity: 0.7; }
+			.cv-btn { display: inline-flex; align-items: center; gap: 0.5em; background: rgba(255,255,255,0.1);
+				border: 1px solid rgba(255,255,255,0.3); color: #fff; padding: 0.6em 1.2em;
+				border-radius: 4px; text-decoration: none; font-size: 0.85em; font-weight: 600;
+				transition: background 0.2s; margin-top: 0.5em; }
+			.cv-btn:hover { background: rgba(255,255,255,0.2); color: #fff; }
+			.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2em; }
+			@media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } }
+			h4.section-label { font-family: monospace; font-size: 0.75em; letter-spacing: 0.12em; text-transform: uppercase;
+				opacity: 0.5; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5em; margin-bottom: 1em; }
+		</style>
+	</head>
+	<body class="is-preload">
+		<div id="wrapper">
 
-<div id="wrapper">
+			<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="logo"><strong>Portfolio</strong> <span>CERTA Yohan</span></a>
+				<nav>
+					<a href="#menu">Menu</a>
+				</nav>
+			</header>
 
-	<!-- Header -->
-	<header id="header">
-		<a href="index.html" class="logo"><strong>Portfolio</strong> <span>CERTA Yohan</span></a>
-		<nav>
-			<a href="#menu">Menu</a>
-		</nav>
-	</header>
-
-	<!-- Menu -->
-	<nav id="menu">
-		<ul class="links">
-			<li><a href="index.html">Accueil</a></li>
-			<li><a href="profil.html">Profil</a></li>
-			<li><a href="projets.html">Projets & Réalisations</a></li>
-			<li><a href="tableau.html">Tableau de synthèse</a></li>
-			<li><a href="contact.html">Contact</a></li>
-		</ul>
-	</nav>
-
-	<!-- Main -->
-	<div id="main" class="alt">
-
-		<!-- Banner -->
-		<section id="one">
-			<div class="inner">
-
-				<header class="major">
-					<h1>Mon Profil</h1>
-				</header>
-
-				<!-- Infos personnelles -->
-				<div class="info-grid">
-					<div class="info-card">
-						<h4>👤 Identité</h4>
-						<strong>CERTA Yohan</strong><br />
-						Né le : 12/04/2006<br />
-						Nationalité : Française
-					</div>
-					<div class="info-card">
-						<h4>📍 Localisation</h4>
-						Lezoux<br />
-						63190<br />
-						Auvergne
-					</div>
-					<div class="info-card">
-						<h4>📞 Contact</h4>
-						07 67 16 73 04<br />
-						<a href="mailto:ycerta.sio@gmail.com">ycerta.sio@gmail.com</a>
-					</div>
-					<div class="info-card">
-						<h4>🎓 Formation actuelle</h4>
-						BTS SIO – option SISR<br />
-						Lycée Sidoine Apollinaire - Clermont-Ferrand<br />
-						2024 – 2026
-					</div>
-				</div>
-
-				<hr class="major" />
-
-				<!-- Présentation -->
-				<h2>Présentation</h2>
-				<p>
-					Étudiant en deuxième année de BTS Services Informatiques aux Organisations, option Solutions d'Infrastructure, Systèmes et Réseaux (SISR), je me passionne pour l'administration des systèmes, la gestion des réseaux et la sécurité informatique. Au cours de ces deux années de formation, j'ai pu développer des compétences solides aussi bien en environnement Windows Server qu'en Linux, ainsi que dans la configuration et la supervision d'équipements réseau.
-				</p>
-				<p>
-					[Ajoutez ici quelques lignes personnelles : vos centres d'intérêt, ce qui vous attire dans l'IT, vos projets d'avenir…]
-				</p>
-
-				<hr class="major" />
-
-				<!-- Parcours scolaire -->
-				<h2>Parcours de formation</h2>
-
-				<div class="timeline">
-
-					<div class="timeline-item">
-						<div class="timeline-year">2024 – 2026</div>
-						<div class="timeline-title">BTS SIO – option SISR</div>
-						<div class="timeline-desc">
-							Lycée Sidoine Apollinaire - Clermont-Ferrand<br />
-							Formation aux solutions d'infrastructure, systèmes et réseaux. Stage de 6 semaines en entreprise en 1ère et 2ème année.
-						</div>
-					</div>
-
-					<div class="timeline-item">
-						<div class="timeline-year">2023 – 2024</div>
-						<div class="timeline-title">Baccalauréat Technologique STI2D</div>
-						<div class="timeline-desc">
-							Lycée Jean Zay - Thiers<br />
-							Spécialités : SIN – Systèmes d'information et numérique
-						</div>
-					</div>
-
-					<div class="timeline-item">
-						<div class="timeline-year">Avant 2023</div>
-						<div class="timeline-title">Collège</div>
-						<div class="timeline-desc">
-							Collège George Onslow - Lezoux
-						</div>
-					</div>
-
-				</div>
-
-				<hr class="major" />
-
-				<!-- Stages -->
-				<h2>Expériences professionnelles & Stages</h2>
-
-				<div class="timeline">
-
-					<div class="timeline-item">
-						<div class="timeline-year">Stage BTS2 – [Mois] 2025</div>
-						<div class="timeline-title">Stage en entreprise – [Nom de l'entreprise]</div>
-						<div class="timeline-desc">
-							[Secteur / Domaine] – [Ville]<br />
-							Missions : [Décrivez vos missions : administration serveur, support utilisateurs, câblage réseau, configuration switch/routeur, etc.]
-						</div>
-					</div>
-
-					<div class="timeline-item">
-						<div class="timeline-year">Stage BTS1 – [Mois] 2024</div>
-						<div class="timeline-title">Stage en entreprise – [Nom de l'entreprise]</div>
-						<div class="timeline-desc">
-							[Secteur / Domaine] – [Ville]<br />
-							Missions : [Décrivez vos missions]
-						</div>
-					</div>
-
-				</div>
-
-				<hr class="major" />
-
-				<!-- Compétences techniques -->
-				<h2>Compétences techniques</h2>
-
-				<h3>Systèmes</h3>
-				<p>
-					<span class="competence-badge">Windows Server 2019/2022</span>
-					<span class="competence-badge">Active Directory</span>
-					<span class="competence-badge">Linux (Debian / Ubuntu)</span>
-					<span class="competence-badge">Virtualisation (VirtualBox / VMware)</span>
-					<span class="competence-badge">Hyper-V</span>
-				</p>
-
-				<h3>Réseaux</h3>
-				<p>
-					<span class="competence-badge">TCP/IP – DHCP – DNS</span>
-					<span class="competence-badge">VLAN – Routage</span>
-					<span class="competence-badge">Cisco Packet Tracer</span>
-					<span class="competence-badge">Pare-feu (pfSense / Windows Firewall)</span>
-					<span class="competence-badge">VPN</span>
-					<span class="competence-badge">SSH / RDP</span>
-				</p>
-
-				<h3>Sécurité & Supervision</h3>
-				<p>
-					<span class="competence-badge">Sauvegarde & PRA</span>
-					<span class="competence-badge">Supervision réseau (PRTG / Zabbix)</span>
-					<span class="competence-badge">GPO (Group Policy)</span>
-					<span class="competence-badge">Antivirus / Sécurité endpoint</span>
-				</p>
-
-				<h3>Outils & Divers</h3>
-				<p>
-					<span class="competence-badge">PowerShell</span>
-					<span class="competence-badge">Bash</span>
-					<span class="competence-badge">HTML / CSS (notions)</span>
-					<span class="competence-badge">GLPI / Tickets</span>
-					<span class="competence-badge">Pack Office</span>
-					<span class="competence-badge">Markdown / Documentation</span>
-				</p>
-
-				<hr class="major" />
-
-				<!-- CV téléchargeable -->
-				<h2>Curriculum Vitae</h2>
-				<p>Retrouvez l'ensemble de mon parcours dans mon CV téléchargeable :</p>
-				<ul class="actions">
-					<li><a href="assets/cv/CV_CERTA_Yohan.pdf" class="button icon solid fa-download" target="_blank">Télécharger mon CV (PDF)</a></li>
+			<!-- Menu -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="index.html">Accueil</a></li>
+					<li><a href="profil.html">Profil</a></li>
+					<li><a href="projets.html">Projets</a></li>
+					<li><a href="contact.html">Contact</a></li>
 				</ul>
-				<p><em>À noter : pensez à placer votre CV au format PDF dans le dossier <code>assets/cv/</code></em></p>
-
-				<hr class="major" />
-
-				<ul class="actions">
-					<li><a href="projets.html" class="button next">Voir mes projets</a></li>
+				<ul class="actions stacked">
+					<li><a href="profil.html" class="button primary fit">Mon Profil</a></li>
+					<li><a href="contact.html" class="button fit">Me contacter</a></li>
 				</ul>
+			</nav>
 
+			<!-- Main -->
+			<div id="main" class="alt">
+
+				<!-- Banner -->
+				<section id="one">
+					<div class="inner">
+						<header class="major">
+							<h1>Profil</h1>
+						</header>
+
+						<div class="two-col">
+							<!-- Colonne gauche -->
+							<div>
+								<h4 class="section-label">Informations</h4>
+								<table class="info-table">
+									<tr><td>Nom</td><td>CERTA Yohan</td></tr>
+									<tr><td>Âge</td><td>20 ans</td></tr>
+									<tr><td>N° candidat</td><td>2602989488</td></tr>
+									<tr><td>Formation</td><td>BTS SIO — SISR</td></tr>
+									<tr><td>Établissement</td><td>Lycée Sidoine Apollinaire, Clermont-Ferrand</td></tr>
+									<tr><td>Promo</td><td>2024 — 2026</td></tr>
+									<tr><td>Permis</td><td>Permis B &amp; Véhicule</td></tr>
+									<tr><td>Anglais</td><td>Niveau B1</td></tr>
+									<tr><td>Espagnol</td><td>Niveau A2</td></tr>
+									<tr><td>Centres d'intérêt</td><td>Jeux vidéos · Musique · FL Studio</td></tr>
+									<tr><td>E-mail</td><td>ycerta.sio@gmail.com</td></tr>
+								</table>
+								<a href="CV_Certa_Yohan.pdf" download class="cv-btn">⬇ Télécharger mon CV</a>
+							</div>
+
+							<!-- Colonne droite -->
+							<div>
+								<h4 class="section-label">Compétences techniques</h4>
+								<div class="skill-tags">
+									<span class="skill-tag">IPFire</span>
+									<span class="skill-tag">Windows Server 2019</span>
+									<span class="skill-tag">Active Directory</span>
+									<span class="skill-tag">DHCP / DNS</span>
+									<span class="skill-tag">HAProxy</span>
+									<span class="skill-tag">Nagios</span>
+									<span class="skill-tag">Zabbix</span>
+									<span class="skill-tag">GLPI</span>
+									<span class="skill-tag">OCS Inventory NG</span>
+									<span class="skill-tag">FOG Project</span>
+									<span class="skill-tag">Debian Linux</span>
+									<span class="skill-tag">Apache2 / SSH</span>
+									<span class="skill-tag">VLAN / TCP-IP</span>
+									<span class="skill-tag">RDP / SSH</span>
+									<span class="skill-tag">vSphere / VMware</span>
+									<span class="skill-tag">Cisco (switch/routeur)</span>
+									<span class="skill-tag">PXE / Multicast</span>
+									<span class="skill-tag">Sysprep</span>
+									<span class="skill-tag">HTML / CSS</span>
+									<span class="skill-tag">GPO / Batch</span>
+								</div>
+
+								<h4 class="section-label" style="margin-top:1.5em;">Compétences transversales</h4>
+								<div class="skill-tags">
+									<span class="skill-tag">Travail en équipe</span>
+									<span class="skill-tag">Apprentissage rapide</span>
+									<span class="skill-tag">Organisation &amp; autonomie</span>
+									<span class="skill-tag">Capacité d'adaptation</span>
+									<span class="skill-tag">Rigueur &amp; assiduité</span>
+								</div>
+							</div>
+						</div>
+
+						<hr />
+
+						<h4 class="section-label">Parcours</h4>
+						<div>
+							<div class="tl-item">
+								<div class="tl-dot"></div>
+								<div>
+									<div class="tl-date">Fév. — Avr. 2026</div>
+									<div class="tl-title">Stage 2ème année — Lycée Sidoine Apollinaire, Clermont-Ferrand</div>
+									<div class="tl-desc">Déploiement de ~60 postes Windows 11 via FOG Project (PXE/Multicast) sur 3 salles. Supervision Zabbix + Veyon. Binôme : Yanis Noël.</div>
+								</div>
+							</div>
+							<div class="tl-item">
+								<div class="tl-dot"></div>
+								<div>
+									<div class="tl-date">Mai — Juin 2025</div>
+									<div class="tl-title">Stage 1ère année — Walden Digital, Clermont-Ferrand</div>
+									<div class="tl-desc">Stage BTS SIO/SISR en entreprise. Rapport à venir.</div>
+								</div>
+							</div>
+							<div class="tl-item">
+								<div class="tl-dot"></div>
+								<div>
+									<div class="tl-date">2024 — 2026</div>
+									<div class="tl-title">BTS SIO — option SISR</div>
+									<div class="tl-desc">Lycée Sidoine Apollinaire, Clermont-Ferrand. Administration réseau, systèmes, sécurité, haute disponibilité, supervision.</div>
+								</div>
+							</div>
+							<div class="tl-item">
+								<div class="tl-dot"></div>
+								<div>
+									<div class="tl-date">2024</div>
+									<div class="tl-title">Baccalauréat STI2D</div>
+									<div class="tl-desc">Sciences et technologies de l'industrie et du développement durable — Lycée Jean Zay, Thiers.</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</section>
 			</div>
-		</section>
 
-	</div>
+			<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<ul class="icons">
+						<li><a href="https://github.com/yohan-cta/portfolio" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; CERTA Yohan — BTS SIO SISR 2026</li>
+					</ul>
+				</div>
+			</footer>
 
-	<!-- Footer -->
-	<footer id="footer">
-		<div class="inner">
-			<ul class="icons">
-				<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-				<li><a href="#" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-				<li><a href="contact.html" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
-			</ul>
-			<ul class="copyright">
-				<li>&copy; CERTA Yohan – BTS SIO SISR</li>
-				<li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
-			</ul>
 		</div>
-	</footer>
 
-</div>
-
-<!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/jquery.scrolly.min.js"></script>
-<script src="assets/js/jquery.scrollex.min.js"></script>
-<script src="assets/js/browser.min.js"></script>
-<script src="assets/js/breakpoints.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
-
-</body>
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/jquery.scrollex.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
 </html>
