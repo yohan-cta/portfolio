@@ -1,386 +1,409 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-	<title>Projets & Réalisations – CERTA Yohan</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="assets/css/main.css" />
-	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	<style>
-		/* --- Projets liste --- */
-		.projets-grid {
-			display: grid;
-			grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-			gap: 1.2em;
-			margin: 1.5em 0 2em 0;
-		}
-		.projet-card {
-			background: rgba(255,255,255,0.04);
-			border: 1px solid rgba(255,255,255,0.1);
-			border-radius: 6px;
-			padding: 1.2em 1.4em;
-			transition: border-color 0.2s;
-		}
-		.projet-card:hover {
-			border-color: rgba(240,84,84,0.5);
-		}
-		.projet-card .tag {
-			display: inline-block;
-			background: rgba(240,84,84,0.15);
-			border: 1px solid rgba(240,84,84,0.35);
-			border-radius: 3px;
-			padding: 0.15em 0.6em;
-			font-size: 0.75em;
-			text-transform: uppercase;
-			letter-spacing: 0.5px;
-			margin-bottom: 0.6em;
-		}
-		.projet-card h4 {
-			margin: 0.4em 0 0.3em 0;
-			font-size: 1em;
-		}
-		.projet-card p {
-			font-size: 0.85em;
-			margin: 0;
-			opacity: 0.8;
-		}
+	<head>
+		<title>Projets — CERTA Yohan</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			/* Badges */
+			.badge { display:inline-block; font-family:monospace; font-size:0.7em; padding:0.2em 0.6em;
+				border-radius:4px; font-weight:700; margin-right:0.4em; vertical-align:middle; }
+			.badge-stage { background:rgba(255,112,67,0.15); color:#ff7043; border:1px solid rgba(255,112,67,0.3); }
+			.badge-ap { background:rgba(0,214,143,0.12); color:#00d68f; border:1px solid rgba(0,214,143,0.3); }
+			.badge-tp { background:rgba(30,144,255,0.12); color:#1e90ff; border:1px solid rgba(30,144,255,0.3); }
+			.badge-star { background:rgba(250,204,21,0.12); color:#facc15; border:1px solid rgba(250,204,21,0.3); }
 
-		/* --- Projets E5 détaillés --- */
-		.projet-detail {
-			background: rgba(255,255,255,0.03);
-			border: 1px solid rgba(255,255,255,0.12);
-			border-left: 4px solid #f05454;
-			border-radius: 6px;
-			padding: 2em;
-			margin-bottom: 2.5em;
-		}
-		.projet-detail h3 {
-			margin-top: 0;
-			color: #ffffff;
-		}
-		.projet-detail .meta {
-			font-size: 0.85em;
-			opacity: 0.7;
-			margin-bottom: 1em;
-		}
-		.competences-list {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 0.5em;
-			margin: 0.8em 0;
-		}
-		.comp-badge {
-			display: inline-flex;
-			align-items: center;
-			gap: 0.4em;
-			background: rgba(240,84,84,0.12);
-			border: 1px solid rgba(240,84,84,0.4);
-			border-radius: 4px;
-			padding: 0.3em 0.8em;
-			font-size: 0.82em;
-			font-weight: bold;
-		}
-		.comp-badge .comp-code {
-			color: #f05454;
-		}
-		.section-label {
-			font-size: 0.8em;
-			text-transform: uppercase;
-			letter-spacing: 1.5px;
-			color: #f05454;
-			font-weight: bold;
-			margin: 1.2em 0 0.4em 0;
-		}
-		.e5-badge {
-			display: inline-block;
-			background: #f05454;
-			color: white;
-			font-size: 0.75em;
-			font-weight: bold;
-			padding: 0.2em 0.7em;
-			border-radius: 3px;
-			text-transform: uppercase;
-			letter-spacing: 1px;
-			margin-left: 0.5em;
-			vertical-align: middle;
-		}
-		hr.major { margin: 3em 0; }
-	</style>
-</head>
-<body class="is-preload">
+			/* Project list cards */
+			.proj-list { list-style:none; padding:0; margin-bottom:2em; }
+			.proj-item { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);
+				border-radius:6px; padding:1em 1.2em; margin-bottom:0.7em; }
+			.proj-item h4 { margin:0.3em 0 0.3em; font-size:1em; }
+			.proj-item p { margin:0; font-size:0.85em; opacity:0.6; }
+			.proj-meta { font-family:monospace; font-size:0.72em; opacity:0.45; }
 
-<div id="wrapper">
+			/* Detail sections */
+			.detail-block { background:rgba(255,255,255,0.03); border-left:3px solid rgba(255,255,255,0.15);
+				padding:1.2em 1.5em; margin-bottom:1.5em; border-radius:0 6px 6px 0; }
+			.detail-block.oral { border-left-color:#00d68f; }
+			.detail-block h3 { margin-top:0; }
 
-	<!-- Header -->
-	<header id="header">
-		<a href="index.html" class="logo"><strong>Portfolio</strong> <span>CERTA Yohan</span></a>
-		<nav>
-			<a href="#menu">Menu</a>
-		</nav>
-	</header>
+			.section-label { font-family:monospace; font-size:0.72em; letter-spacing:0.12em; text-transform:uppercase;
+				opacity:0.45; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:0.5em; margin-bottom:1em; }
 
-	<!-- Menu -->
-	<nav id="menu">
-		<ul class="links">
-			<li><a href="index.html">Accueil</a></li>
-			<li><a href="profil.html">Profil</a></li>
-			<li><a href="projets.html">Projets & Réalisations</a></li>
-			<li><a href="tableau.html">Tableau de synthèse</a></li>
-			<li><a href="contact.html">Contact</a></li>
-		</ul>
-	</nav>
+			/* Infra box */
+			.infra-box { background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.1); border-radius:6px;
+				padding:1em 1.2em; font-family:monospace; font-size:0.78em; line-height:1.9; overflow-x:auto; margin:0.8em 0; }
+			.infra-box .z { color:#00d68f; font-weight:700; }
+			.infra-box .ip { color:#1e90ff; }
+			.infra-box .sv { color:#eaf2ff; }
 
-	<!-- Main -->
-	<div id="main" class="alt">
-		<section id="one">
-			<div class="inner">
+			/* Accordion */
+			.accordion { border:1px solid rgba(255,255,255,0.08); border-radius:6px; margin-bottom:0.6em; overflow:hidden; }
+			.accordion-header { display:flex; align-items:center; gap:0.8em; padding:0.8em 1em; cursor:pointer;
+				background:rgba(255,255,255,0.04); transition:background 0.2s; }
+			.accordion-header:hover { background:rgba(255,255,255,0.07); }
+			.accordion-header .mn { font-family:monospace; font-size:0.7em; background:rgba(0,214,143,0.1);
+				color:#00d68f; padding:0.18em 0.5em; border-radius:4px; white-space:nowrap; }
+			.accordion-header h4 { flex:1; margin:0; font-size:0.9em; }
+			.accordion-toggle { color:rgba(255,255,255,0.4); transition:transform 0.2s; font-size:1em; }
+			.accordion.open .accordion-toggle { transform:rotate(180deg); }
+			.accordion-body { padding:0 1em; max-height:0; overflow:hidden; transition:max-height 0.3s ease, padding 0.3s ease;
+				font-size:0.87em; line-height:1.7; }
+			.accordion.open .accordion-body { max-height:800px; padding:0.8em 1em 1em; }
+			.accordion-body ul { list-style:none; padding:0; margin:0.5em 0 0; }
+			.accordion-body ul li { padding-left:1.2em; position:relative; margin-bottom:0.3em; }
+			.accordion-body ul li::before { content:'▸'; position:absolute; left:0; color:#00d68f; }
 
-				<header class="major">
-					<h1>Projets & Réalisations</h1>
-				</header>
+			/* Comp tags */
+			.comp-tags { display:flex; flex-wrap:wrap; gap:0.4em; margin-top:0.8em; }
+			.ctag { font-size:0.72em; padding:0.25em 0.65em; border-radius:20px; font-weight:700; font-family:monospace; }
+			.c1 { background:rgba(0,214,143,0.1); color:#00d68f; border:1px solid rgba(0,214,143,0.25); }
+			.c2 { background:rgba(30,144,255,0.1); color:#1e90ff; border:1px solid rgba(30,144,255,0.25); }
+			.c3 { background:rgba(167,139,250,0.1); color:#a78bfa; border:1px solid rgba(167,139,250,0.25); }
+			.c4 { background:rgba(255,112,67,0.1); color:#ff7043; border:1px solid rgba(255,112,67,0.25); }
+			.c5 { background:rgba(250,204,21,0.1); color:#facc15; border:1px solid rgba(250,204,21,0.25); }
+			.c6 { background:rgba(236,72,153,0.1); color:#ec4899; border:1px solid rgba(236,72,153,0.25); }
 
-				<p>Retrouvez ici l'ensemble des travaux pratiques, projets et stages réalisés au cours de mes deux années de BTS SIO SISR. Trois projets sont présentés en détail dans le cadre de l'épreuve E5, couvrant l'ensemble des 6 compétences du référentiel.</p>
+			.tech-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0.5em; margin:0.8em 0; }
+			.tech-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08);
+				border-radius:5px; padding:0.55em 0.8em; }
+			.tech-box .tk { font-family:monospace; font-size:0.68em; opacity:0.5; margin-bottom:0.15em; }
+			.tech-box .tv { font-size:0.8em; font-weight:600; }
+			@media (max-width:600px) { .tech-grid { grid-template-columns:repeat(2,1fr); } }
 
-				<!-- ===== TOUS LES PROJETS ===== -->
-				<hr class="major" />
-				<h2>Tous les projets réalisés</h2>
+			hr.section-sep { border:none; border-top:2px solid rgba(255,255,255,0.06); margin:2.5em 0; }
+		</style>
+	</head>
+	<body class="is-preload">
+		<div id="wrapper">
 
-				<div class="projets-grid">
+			<header id="header">
+				<a href="index.html" class="logo"><strong>Portfolio</strong> <span>CERTA Yohan</span></a>
+				<nav><a href="#menu">Menu</a></nav>
+			</header>
 
-					<div class="projet-card">
-						<span class="tag">TP – BTS1</span>
-						<h4>Installation d'un réseau local</h4>
-						<p>Configuration d'un réseau LAN avec adressage IP statique et dynamique (DHCP), routage inter-VLAN.</p>
-					</div>
-
-					<div class="projet-card">
-						<span class="tag">TP – BTS1</span>
-						<h4>Mise en place d'un serveur Active Directory</h4>
-						<p>Installation de Windows Server, création d'un domaine, gestion des utilisateurs et des GPO.</p>
-					</div>
-
-					<div class="projet-card">
-						<span class="tag">TP – BTS1</span>
-						<h4>Configuration de VLAN sur switch Cisco</h4>
-						<p>Segmentation réseau, configuration de trunk ports et de VLAN avec Cisco Packet Tracer.</p>
-					</div>
-
-					<div class="projet-card">
-						<span class="tag">TP – BTS1</span>
-						<h4>Mise en place d'un serveur DHCP/DNS</h4>
-						<p>Configuration des services DHCP et DNS sous Windows Server et sous Linux (ISC-DHCP, Bind9).</p>
-					</div>
-
-					<div class="projet-card">
-						<span class="tag">TP – BTS1</span>
-						<h4>Virtualisation avec VirtualBox</h4>
-						<p>Création et gestion de machines virtuelles, configuration des cartes réseau virtuelles (NAT, Bridge, Host-only).</p>
-					</div>
-
-					<div class="projet-card">
-						<span class="tag">Stage BTS1 – [Entreprise]</span>
-						<h4>[Intitulé mission de stage]</h4>
-						<p>[Courte description de ce que vous avez fait en stage de 1ère année]</p>
-					</div>
-
-					<div class="projet-card">
-						<span class="tag">TP – BTS2</span>
-						<h4>Déploiement d'un pare-feu pfSense</h4>
-						<p>Installation et configuration de pfSense : règles de filtrage, NAT, création de DMZ, tunnel VPN.</p>
-					</div>
-
-					<div class="projet-card">
-						<span class="tag">TP – BTS2</span>
-						<h4>Supervision réseau avec Zabbix</h4>
-						<p>Mise en place d'un serveur de supervision, création d'hôtes, d'items et d'alertes pour surveiller l'infrastructure.</p>
-					</div>
-
-					<div class="projet-card">
-						<span class="tag">TP – BTS2</span>
-						<h4>Scripting PowerShell</h4>
-						<p>Automatisation de tâches d'administration : création d'utilisateurs AD en masse, rapports, sauvegardes planifiées.</p>
-					</div>
-
-					<div class="projet-card">
-						<span class="tag">TP – BTS2</span>
-						<h4>Plan de Reprise d'Activité (PRA)</h4>
-						<p>Analyse des risques, stratégie de sauvegarde, mise en place d'une solution de réplication et tests de restauration.</p>
-					</div>
-
-					<div class="projet-card">
-						<span class="tag">TP – BTS2</span>
-						<h4>Déploiement automatisé (WDS / WSUS)</h4>
-						<p>Déploiement d'images Windows en réseau, gestion des mises à jour via WSUS.</p>
-					</div>
-
-					<div class="projet-card">
-						<span class="tag">Stage BTS2 – [Entreprise]</span>
-						<h4>[Intitulé mission de stage]</h4>
-						<p>[Courte description de ce que vous avez fait en stage de 2ème année]</p>
-					</div>
-
-				</div>
-
-				<!-- ===== 3 PROJETS E5 DÉTAILLÉS ===== -->
-				<hr class="major" />
-				<h2>Projets sélectionnés pour l'épreuve E5 <span class="e5-badge">E5</span></h2>
-				<p>Ces trois projets ont été retenus car ils couvrent collectivement les <strong>6 blocs de compétences</strong> du référentiel BTS SIO SISR. Ils seront présentés et défendus à l'oral devant le jury.</p>
-
-				<!-- ===== PROJET E5 N°1 ===== -->
-				<div class="projet-detail">
-					<h3>Projet 1 – [Titre de votre 1er projet E5] <span class="e5-badge">Projet E5 #1</span></h3>
-					<div class="meta">
-						📅 Période : [Mois AAAA] &nbsp;|&nbsp; 🏢 Contexte : [TP en cours / Stage entreprise / Projet tuteuré] &nbsp;|&nbsp; 🏫 [Établissement ou Entreprise]
-					</div>
-
-					<div class="section-label">Contexte & Objectifs</div>
-					<p>
-						[Décrivez en quelques phrases le contexte de ce projet : pourquoi ce projet a été réalisé, quel était le besoin, dans quel environnement (école, entreprise, client fictif…). Soyez précis car le jury vous posera des questions dessus.]
-					</p>
-
-					<div class="section-label">Environnement technique</div>
-					<p>
-						<strong>Matériels :</strong> [Ex. Switch Cisco Catalyst 2960, routeur, serveurs physiques, postes clients]<br />
-						<strong>Logiciels / OS :</strong> [Ex. Windows Server 2019, Debian 11, VirtualBox 6.1]<br />
-						<strong>Protocoles / Services :</strong> [Ex. DHCP, DNS, Active Directory, VLAN 802.1Q]
-					</p>
-
-					<div class="section-label">Travail réalisé</div>
-					<p>
-						[Décrivez étape par étape ce que vous avez fait. Soyez méthodique :
-						<br />1. [Première étape réalisée]
-						<br />2. [Deuxième étape]
-						<br />3. [...]
-						<br />N'hésitez pas à mentionner les difficultés rencontrées et comment vous les avez résolues.]
-					</p>
-
-					<div class="section-label">Résultats & Livrables</div>
-					<p>
-						[Décrivez ce que vous avez produit/livré : documentation technique, schéma réseau, scripts, rapport de test…]
-					</p>
-
-					<div class="section-label">Compétences couvertes (référentiel BTS SIO SISR)</div>
-					<div class="competences-list">
-						<span class="comp-badge"><span class="comp-code">B1</span> Gestion du patrimoine informatique</span>
-						<span class="comp-badge"><span class="comp-code">B2</span> Réponse aux incidents et demandes</span>
-						<span class="comp-badge"><span class="comp-code">B4</span> Travail en mode projet</span>
-					</div>
-					<p><em>⚠️ Adaptez les compétences cochées selon ce que votre projet couvre réellement.</em></p>
-				</div>
-
-				<!-- ===== PROJET E5 N°2 ===== -->
-				<div class="projet-detail">
-					<h3>Projet 2 – [Titre de votre 2ème projet E5] <span class="e5-badge">Projet E5 #2</span></h3>
-					<div class="meta">
-						📅 Période : [Mois AAAA] &nbsp;|&nbsp; 🏢 Contexte : [TP en cours / Stage entreprise / Projet tuteuré] &nbsp;|&nbsp; 🏫 [Établissement ou Entreprise]
-					</div>
-
-					<div class="section-label">Contexte & Objectifs</div>
-					<p>
-						[Décrivez en quelques phrases le contexte de ce projet.]
-					</p>
-
-					<div class="section-label">Environnement technique</div>
-					<p>
-						<strong>Matériels :</strong> [...]<br />
-						<strong>Logiciels / OS :</strong> [...]<br />
-						<strong>Protocoles / Services :</strong> [...]
-					</p>
-
-					<div class="section-label">Travail réalisé</div>
-					<p>
-						[Décrivez étape par étape ce que vous avez fait.]
-					</p>
-
-					<div class="section-label">Résultats & Livrables</div>
-					<p>
-						[Ce que vous avez produit/livré.]
-					</p>
-
-					<div class="section-label">Compétences couvertes (référentiel BTS SIO SISR)</div>
-					<div class="competences-list">
-						<span class="comp-badge"><span class="comp-code">B3</span> Gestion des infras & sécurité</span>
-						<span class="comp-badge"><span class="comp-code">B5</span> Mise à disposition d'un service informatique</span>
-					</div>
-					<p><em>⚠️ Adaptez les compétences cochées selon ce que votre projet couvre réellement.</em></p>
-				</div>
-
-				<!-- ===== PROJET E5 N°3 ===== -->
-				<div class="projet-detail">
-					<h3>Projet 3 – [Titre de votre 3ème projet E5] <span class="e5-badge">Projet E5 #3</span></h3>
-					<div class="meta">
-						📅 Période : [Mois AAAA] &nbsp;|&nbsp; 🏢 Contexte : [TP en cours / Stage entreprise / Projet tuteuré] &nbsp;|&nbsp; 🏫 [Établissement ou Entreprise]
-					</div>
-
-					<div class="section-label">Contexte & Objectifs</div>
-					<p>
-						[Décrivez en quelques phrases le contexte de ce projet.]
-					</p>
-
-					<div class="section-label">Environnement technique</div>
-					<p>
-						<strong>Matériels :</strong> [...]<br />
-						<strong>Logiciels / OS :</strong> [...]<br />
-						<strong>Protocoles / Services :</strong> [...]
-					</p>
-
-					<div class="section-label">Travail réalisé</div>
-					<p>
-						[Décrivez étape par étape ce que vous avez fait.]
-					</p>
-
-					<div class="section-label">Résultats & Livrables</div>
-					<p>
-						[Ce que vous avez produit/livré.]
-					</p>
-
-					<div class="section-label">Compétences couvertes (référentiel BTS SIO SISR)</div>
-					<div class="competences-list">
-						<span class="comp-badge"><span class="comp-code">B3</span> Gestion des infras & sécurité</span>
-						<span class="comp-badge"><span class="comp-code">B4</span> Travail en mode projet</span>
-						<span class="comp-badge"><span class="comp-code">B6</span> Développement professionnel</span>
-					</div>
-					<p><em>⚠️ Adaptez les compétences cochées selon ce que votre projet couvre réellement.</em></p>
-				</div>
-
-				<!-- Lien tableau -->
-				<div class="box">
-					<p>💡 <strong>Rappel E5 :</strong> Les 6 blocs de compétences (B1 à B6) doivent être couverts collectivement par vos 3 projets sélectionnés. Vérifiez la couverture complète dans le tableau de synthèse.</p>
-				</div>
-
-				<ul class="actions">
-					<li><a href="tableau.html" class="button next">Voir le tableau de synthèse</a></li>
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="index.html">Accueil</a></li>
+					<li><a href="profil.html">Profil</a></li>
+					<li><a href="projets.html">Projets</a></li>
+					<li><a href="contact.html">Contact</a></li>
 				</ul>
+				<ul class="actions stacked">
+					<li><a href="profil.html" class="button primary fit">Mon Profil</a></li>
+					<li><a href="contact.html" class="button fit">Me contacter</a></li>
+				</ul>
+			</nav>
 
+			<div id="main" class="alt">
+				<section id="one">
+					<div class="inner">
+						<header class="major">
+							<h1>Projets</h1>
+						</header>
+						<p>Ensemble des réalisations durant le BTS SIO SISR — <strong>3 projets sélectionnés pour l'oral E6</strong> sont présentés en détail ci-dessous.</p>
+
+						<!-- ── LISTE TOUS LES PROJETS ── -->
+						<h4 class="section-label">Tous les projets</h4>
+						<ul class="proj-list">
+							<li class="proj-item">
+								<span class="badge badge-stage">Stage 2ème année</span>
+								<span class="badge badge-star">⭐ Oral E6</span>
+								<h4>Stage — Déploiement de postes (FOG Project)</h4>
+								<p>Lycée Sidoine Apollinaire — Fév. – Avr. 2026<br/>Déploiement ~60 postes Windows 11 via PXE/Multicast, supervision Zabbix + Veyon.</p>
+							</li>
+							<li class="proj-item">
+								<span class="badge badge-tp">TP</span>
+								<span class="badge badge-star">⭐ Oral E6</span>
+								<h4>GLPI + OCS Inventory NG — Gestion de parc</h4>
+								<p>Lycée Sidoine Apollinaire — Janv. 2026<br/>Mise en place GLPI + OCS pour la section BTS SIO. Gestion parc, tickets, profils utilisateurs.</p>
+							</li>
+							<li class="proj-item">
+								<span class="badge badge-ap">AP — Fiche E6</span>
+								<span class="badge badge-star">⭐ Oral E6</span>
+								<h4>GSB — HAProxy + Nagios (Fiches E6 n°1 &amp; n°2)</h4>
+								<p>GSB-DIJON-2 — Nov. – Déc. 2025<br/>Load balancer HAProxy (50/50 Round Robin) + supervision Nagios en DMZ.</p>
+							</li>
+							<li class="proj-item">
+								<span class="badge badge-stage">Stage 1ère année</span>
+								<h4>Stage — Walden Digital, Clermont-Ferrand</h4>
+								<p>Mai – Juin 2025 — Stage BTS SIO/SISR en entreprise. <em>Rapport à venir.</em></p>
+							</li>
+							<li class="proj-item">
+								<span class="badge badge-ap">AP GSB</span>
+								<h4>GSB — Infrastructure de base (Missions 1 à 3)</h4>
+								<p>Sept. – Nov. 2025 — IPFire, AD/DHCP/DNS, blacklist web, proxy transparent, redirections RDP/SSH/HTTP.</p>
+							</li>
+							<li class="proj-item">
+								<span class="badge badge-ap">AP GSB</span>
+								<h4>GSB — AD avancé, GPO, partages réseau (Mission 5)</h4>
+								<p>Janv. 2026 — UO, groupes, utilisateurs, scripts NETLOGON, GPO, partages réseau.</p>
+							</li>
+							<li class="proj-item">
+								<span class="badge badge-tp">RP 1.1</span>
+								<h4>Site HTML « Publicité »</h4>
+								<p>12/09/2024 – 07/11/2024 — Site web statique HTML/CSS. Travail en mode projet.</p>
+							</li>
+							<li class="proj-item">
+								<span class="badge badge-tp">RP 1.2</span>
+								<h4>CSS Zen Garden</h4>
+								<p>07/11/2024 – 19/12/2024 — Mise en forme créative via CSS uniquement. Veille technologique.</p>
+							</li>
+							<li class="proj-item">
+								<span class="badge badge-tp">RP 2.1</span>
+								<h4>Logiciel Apprentissage Calcul</h4>
+								<p>09/01/2025 – 13/03/2025 — Maintenance et déploiement d'un logiciel pédagogique.</p>
+							</li>
+							<li class="proj-item">
+								<span class="badge badge-tp">RP 2.2</span>
+								<h4>Maintenance corrective et évolutive de jeux</h4>
+								<p>07/03/2025 – 07/05/2025 — Correction bugs, ajout fonctionnalités, tests d'intégration.</p>
+							</li>
+							<li class="proj-item">
+								<span class="badge badge-tp">RP 2.3</span>
+								<h4>Veille technologique — Journal</h4>
+								<p>19/09/2024 – 16/01/2025 — Journal de veille sur réseaux, systèmes et cybersécurité.</p>
+							</li>
+						</ul>
+
+						<hr class="section-sep"/>
+
+						<!-- ════ DETAIL 1 : STAGE FOG ════ -->
+						<div class="detail-block oral">
+							<h4 class="section-label">Projet présenté en détail — 1/3</h4>
+							<span class="badge badge-stage">Stage 2ème année</span>
+							<span class="badge badge-star">⭐ Oral E6</span>
+							<h3 style="margin-top:0.8em;">Stage — Déploiement de postes (FOG Project)</h3>
+							<p style="opacity:0.7;font-size:0.9em;">Lycée Sidoine Apollinaire, Clermont-Ferrand — 23 fév. au 3 avr. 2026 — Binôme : Yanis Noël — Tuteur : M. Rochon</p>
+
+							<h4 class="section-label">Contexte</h4>
+							<p>Stage de 6 semaines au Lycée Sidoine Apollinaire. Mission : déployer une image <strong>Windows 11 standardisée</strong> sur ~60 postes dans 3 salles (S-402, S-405, S-406) via un serveur <strong>FOG Project</strong> (clonage réseau PXE/Multicast). Machines : PC TERRA (DDR5, 1 To). Travail en totale autonomie.</p>
+
+							<h4 class="section-label">Architecture réseau</h4>
+							<div class="infra-box">
+<span class="z">Réseau dédié — 192.168.10.0/24</span>
+  <span class="sv">Serveur FOG</span>      <span class="ip">192.168.10.12</span>  — VM Debian 11, déploiement PXE/Multicast
+  <span class="sv">Windows Server</span>   <span class="ip">192.168.10.20</span>  — VM, DHCP (opt. 066/067 PXE)
+  <span class="sv">Routeur Cisco</span>    <span class="ip">192.168.10.254</span> — Passerelle
+  <span class="sv">Plage DHCP</span>       <span class="ip">192.168.10.40–100</span> — Postes clients PXE
+							</div>
+
+							<h4 class="section-label">Logiciels dans l'image master</h4>
+							<div class="tech-grid">
+								<div class="tech-box"><div class="tk">Réseau</div><div class="tv">Cisco Packet Tracer · Wireshark</div></div>
+								<div class="tech-box"><div class="tk">Développement</div><div class="tv">Visual Studio 2026 · VS Code · Notepad++</div></div>
+								<div class="tech-box"><div class="tk">Virtualisation</div><div class="tv">VMware Workstation · VirtualBox</div></div>
+								<div class="tech-box"><div class="tk">Web local</div><div class="tv">WAMP + PHP</div></div>
+								<div class="tech-box"><div class="tk">Utilitaires</div><div class="tv">Chrome · CCleaner</div></div>
+							</div>
+
+							<h4 class="section-label">Phases du projet</h4>
+							<div class="accordion open">
+								<div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+									<span class="mn">Phase 1</span><h4>Analyse &amp; planification (GANTT)</h4><span class="accordion-toggle">▾</span>
+								</div>
+								<div class="accordion-body">Inventaire matériel (PC TERRA, switch + routeur Cisco), choix de FOG Project v1.5.10, élaboration d'un <strong>diagramme de Gantt</strong> sur 6 semaines. Planification salle par salle selon les créneaux de disponibilité.</div>
+							</div>
+							<div class="accordion">
+								<div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+									<span class="mn">Phase 2</span><h4>Infrastructure réseau</h4><span class="accordion-toggle">▾</span>
+								</div>
+								<div class="accordion-body"><ul>
+									<li>Installation du <strong>serveur FOG</strong> (VM Debian 11, IP statique 192.168.10.12).</li>
+									<li>Config <strong>DHCP Windows Server</strong> : option 066 → 192.168.10.12, option 067 → ipxe.efi.</li>
+									<li>Configuration <strong>switch + routeur Cisco</strong> pour le réseau de déploiement.</li>
+								</ul></div>
+							</div>
+							<div class="accordion">
+								<div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+									<span class="mn">Phase 3</span><h4>PC Master + Sysprep</h4><span class="accordion-toggle">▾</span>
+								</div>
+								<div class="accordion-body">Installation Windows 11 + logiciels sur le PC Master. Généralisation via <strong>Sysprep</strong> (OOBE + « Généraliser ») pour réinitialiser le SID et éviter les conflits réseau/AD. PC éteint immédiatement, jamais redémarré sur Windows avant capture.</div>
+							</div>
+							<div class="accordion">
+								<div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+									<span class="mn">Phase 4</span><h4>Capture (~70 Go) + tests Unicast</h4><span class="accordion-toggle">▾</span>
+								</div>
+								<div class="accordion-body">Capture via boot PXE (Quick Registration + tâche FOG). Image ~70 Go. Tests <strong>Unicast</strong> sur 1-2 postes : validation drivers, logiciels, nommage.</div>
+							</div>
+							<div class="accordion">
+								<div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+									<span class="mn">Phase 5</span><h4>Déploiement Multicast (~60 postes)</h4><span class="accordion-toggle">▾</span>
+								</div>
+								<div class="accordion-body"><ul>
+									<li>Config BIOS : boot UEFI LAN prioritaire, Network Stack IPv4, Secure Boot désactivé.</li>
+									<li>Enregistrement postes via <strong>Quick Registration and Inventory</strong> FOG.</li>
+									<li>Déploiement <strong>Multicast</strong> salle par salle (~20 postes simultanément).</li>
+									<li>Post-déploiement : intégration au <strong>domaine Active Directory</strong> du lycée.</li>
+								</ul></div>
+							</div>
+							<div class="accordion">
+								<div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+									<span class="mn">Phase 6</span><h4>Tâches complémentaires</h4><span class="accordion-toggle">▾</span>
+								</div>
+								<div class="accordion-body"><ul>
+									<li><strong>Veyon</strong> : supervision des postes élèves (contrôle distant, partage écran, verrouillage).</li>
+									<li><strong>Zabbix</strong> : supervision infrastructure réseau du lycée (alertes, monitoring services).</li>
+								</ul></div>
+							</div>
+
+							<h4 class="section-label" style="margin-top:1.2em;">Compétences</h4>
+							<div class="comp-tags">
+								<span class="ctag c1">C1 — Gérer le patrimoine informatique</span>
+								<span class="ctag c4">C4 — Travailler en mode projet</span>
+								<span class="ctag c5">C5 — Mettre à disposition un service</span>
+								<span class="ctag c6">C6 — Développement professionnel</span>
+							</div>
+						</div>
+
+						<!-- ════ DETAIL 2 : GLPI ════ -->
+						<div class="detail-block oral">
+							<h4 class="section-label">Projet présenté en détail — 2/3</h4>
+							<span class="badge badge-tp">TP</span>
+							<span class="badge badge-star">⭐ Oral E6</span>
+							<h3 style="margin-top:0.8em;">GLPI + OCS Inventory NG — Gestion de parc</h3>
+							<p style="opacity:0.7;font-size:0.9em;">Lycée Sidoine Apollinaire, Clermont-Ferrand — Janvier 2026 — Binôme : Joshua</p>
+
+							<h4 class="section-label">Contexte</h4>
+							<p>Mission : concevoir et déployer une infrastructure de <strong>gestion de parc informatique</strong> pour la section BTS SIO du lycée, à l'aide de GLPI couplé à OCS Inventory NG pour l'inventaire automatisé.</p>
+
+							<h4 class="section-label">Architecture technique</h4>
+							<div class="infra-box">
+<span class="z">Serveur Debian (srv-bts-sio)</span>
+  Apache2 + PHP + MariaDB
+  OCS Inventory NG   — Inventaire automatisé (agent → serveur)
+  GLPI 10.0.14       — Gestion parc + tickets d'incidents
+  Plugin OCSNG 2.0.5 — Interconnexion OCS ↔ GLPI
+
+<span class="z">Entités :</span> BTS SIO > Salle B-405 / B-406 / B-407
+							</div>
+
+							<h4 class="section-label">Organisation mise en place</h4>
+							<div class="accordion open">
+								<div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+									<span class="mn">Entités</span><h4>Structure organisationnelle</h4><span class="accordion-toggle">▾</span>
+								</div>
+								<div class="accordion-body">Entité racine <strong>BTS SIO</strong> avec sous-entités : <strong>Salle B-405, B-406, B-407</strong>. Permet de localiser chaque incident précisément et de cibler les interventions.</div>
+							</div>
+							<div class="accordion">
+								<div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+									<span class="mn">Profils</span><h4>Gestion des droits utilisateurs</h4><span class="accordion-toggle">▾</span>
+								</div>
+								<div class="accordion-body"><ul>
+									<li><strong>Étudiants</strong> : création et suivi de leurs propres tickets uniquement.</li>
+									<li><strong>Enseignants</strong> : vue globale sur tous les tickets de leur entité.</li>
+									<li><strong>Administrateurs/Techniciens</strong> : gestion complète du parc et des tickets.</li>
+								</ul></div>
+							</div>
+							<div class="accordion">
+								<div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+									<span class="mn">OCS</span><h4>Inventaire automatisé</h4><span class="accordion-toggle">▾</span>
+								</div>
+								<div class="accordion-body">Agents OCS sur les postes Windows → remontée automatique des infos matérielles (CPU, RAM, disque) et logicielles (OS, licences, domaine). Chaque équipement est lié à son historique de maintenance dans GLPI.</div>
+							</div>
+							<div class="accordion">
+								<div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
+									<span class="mn">Tickets</span><h4>Cycle de vie des incidents</h4><span class="accordion-toggle">▾</span>
+								</div>
+								<div class="accordion-body">
+									Cycle : <strong>Création → Attribution → En Attente → Résolution → Clôture</strong>
+									<ul style="margin-top:0.5em;">
+										<li><em>Cas 1</em> : "PC ne démarre pas" (Salle B-407) — ouverture étudiant, résolution technicien, clôture documentée.</li>
+										<li><em>Cas 2</em> : Visibilité selon profil — étudiant voit uniquement son ticket, enseignant voit tous les tickets de son entité.</li>
+									</ul>
+								</div>
+							</div>
+
+							<h4 class="section-label" style="margin-top:1.2em;">Compétences</h4>
+							<div class="comp-tags">
+								<span class="ctag c1">C1 — Gérer le patrimoine informatique</span>
+								<span class="ctag c2">C2 — Répondre aux incidents</span>
+								<span class="ctag c5">C5 — Mettre à disposition un service</span>
+								<span class="ctag c6">C6 — Développement professionnel</span>
+							</div>
+						</div>
+
+						<!-- ════ DETAIL 3 : HAPROXY + NAGIOS ════ -->
+						<div class="detail-block oral">
+							<h4 class="section-label">Projet présenté en détail — 3/3</h4>
+							<span class="badge badge-ap">AP — Fiche E6 n°1</span>
+							<span class="badge badge-ap">AP — Fiche E6 n°2</span>
+							<span class="badge badge-star">⭐ Oral E6</span>
+							<h3 style="margin-top:0.8em;">GSB — HAProxy + Nagios</h3>
+							<p style="opacity:0.7;font-size:0.9em;">GSB-DIJON-2, Lycée Sidoine Apollinaire — Nov.–Déc. 2025 — Binôme : Yanis Noël — N° candidat : 2602989488</p>
+
+							<h4 class="section-label">Contexte</h4>
+							<p>Dans le cadre de l'AP GSB (agence <strong>GSB-DIJON-2</strong>), deux missions font l'objet des <strong>fiches E6 officielles</strong> : HAProxy (Fiche n°1) et Nagios (Fiche n°2), déployées en zone DMZ de l'infrastructure réseau de l'agence.</p>
+
+							<h4 class="section-label">Infrastructure GSB-DIJON-2</h4>
+							<div class="infra-box">
+<span class="z">LAN — VLAN 1203 — </span><span class="ip">192.168.227.96/28</span>
+  <span class="sv">WINSRVAD-DIJON</span>  <span class="ip">192.168.227.97</span>   — AD DS / DHCP / DNS / w32tm
+  <span class="sv">Win10 (PC1,2,3)</span> <span class="ip">192.168.227.101–104</span> — DHCP
+
+<span class="z">DMZ — VLAN 1211 — </span><span class="ip">10.31.2.0/24</span>
+  <span class="sv">SRVWEBSSH</span>       <span class="ip">10.69.2.1</span>   — Apache2 + SSH
+  <span class="sv">SRVWEBSSH_2</span>     <span class="ip">10.69.2.2</span>   — Apache2
+  <span class="sv">SRVHAPROXY</span>      <span class="ip">10.69.2.3</span>   — HAProxy (Round Robin 50/50)
+  <span class="sv">SRVNAGIOS</span>       <span class="ip">10.69.2.4</span>   — Supervision (CPU/RAM/disk/HTTP)
+  <span class="sv">IPFIRE (DMZ)</span>    <span class="ip">10.69.2.254</span>
+
+<span class="z">vSphere :</span> Datacenter_SIO63\E2\AP CERTA NOEL
+							</div>
+
+							<h4 class="section-label">Fiche E6 n°1 — HAProxy (03/11/2025 – 18/11/2025)</h4>
+							<ul style="font-size:0.88em;margin-bottom:1em;">
+								<li>Installation de <strong>HAProxy</strong> sur VM Debian en DMZ (10.69.2.3).</li>
+								<li>Frontend : écoute port 80 sur l'IP du HAProxy.</li>
+								<li>Backend : algorithme <em>roundrobin</em> 50/50 entre SRVWEBSSH et SRVWEBSSH_2.</li>
+								<li>DNS <strong>Dnsmasq</strong> : résolution <em>gsb-dijon-2-web.com</em> → 10.69.2.3.</li>
+								<li>Tests : alternance visible entre les deux serveurs à chaque requête HTTP.</li>
+								<li>Config avancée : simulation serveur 3× moins puissant (pondération roundrobin).</li>
+							</ul>
+
+							<h4 class="section-label">Fiche E6 n°2 — Nagios (01/12/2025 – 16/12/2025)</h4>
+							<ul style="font-size:0.88em;margin-bottom:1em;">
+								<li>Installation de <strong>Nagios</strong> sur VM Debian en DMZ (10.69.2.4).</li>
+								<li>Protocoles : <strong>NRPE</strong> (Linux), <strong>NSClient++</strong> (Windows), <strong>ICMP</strong> (ping).</li>
+								<li>Éléments supervisés : <em>charge CPU, RAM, espace disque, service HTTP</em>.</li>
+								<li>Cibles : SRVWEBSSH, SRVWEBSSH_2, SRVHAPROXY, WINSRVAD-DIJON.</li>
+								<li>Alertes temps réel accessibles depuis l'interface web (LAN admin).</li>
+							</ul>
+
+							<h4 class="section-label" style="margin-top:1.2em;">Compétences</h4>
+							<div class="comp-tags">
+								<span class="ctag c1">C1 — Gérer le patrimoine informatique</span>
+								<span class="ctag c2">C2 — Répondre aux incidents</span>
+								<span class="ctag c4">C4 — Travailler en mode projet</span>
+								<span class="ctag c5">C5 — Mettre à disposition un service</span>
+							</div>
+						</div>
+
+					</div>
+				</section>
 			</div>
-		</section>
-	</div>
 
-	<!-- Footer -->
-	<footer id="footer">
-		<div class="inner">
-			<ul class="icons">
-				<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-				<li><a href="#" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-				<li><a href="contact.html" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
-			</ul>
-			<ul class="copyright">
-				<li>&copy; CERTA Yohan – BTS SIO SISR</li>
-				<li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
-			</ul>
+			<footer id="footer">
+				<div class="inner">
+					<ul class="icons">
+						<li><a href="https://github.com/yohan-cta/portfolio" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; CERTA Yohan — BTS SIO SISR 2026</li>
+					</ul>
+				</div>
+			</footer>
+
 		</div>
-	</footer>
 
-</div>
-
-<!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/jquery.scrolly.min.js"></script>
-<script src="assets/js/jquery.scrollex.min.js"></script>
-<script src="assets/js/browser.min.js"></script>
-<script src="assets/js/breakpoints.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
-
-</body>
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/jquery.scrollex.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
 </html>
