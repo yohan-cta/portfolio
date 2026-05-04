@@ -1,405 +1,614 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>Projets — CERTA Yohan</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		<style>
-			/* Badges */
-			.badge { display:inline-block; font-family:monospace; font-size:0.7em; padding:0.2em 0.6em;
-				border-radius:4px; font-weight:700; margin-right:0.4em; vertical-align:middle; }
-			.badge-stage { background:rgba(255,112,67,0.15); color:#ff7043; border:1px solid rgba(255,112,67,0.3); }
-			.badge-ap { background:rgba(0,214,143,0.12); color:#00d68f; border:1px solid rgba(0,214,143,0.3); }
-			.badge-tp { background:rgba(30,144,255,0.12); color:#1e90ff; border:1px solid rgba(30,144,255,0.3); }
-			.badge-star { background:rgba(250,204,21,0.12); color:#facc15; border:1px solid rgba(250,204,21,0.3); }
+<head>
+	<title>Projets — CERTA Yohan</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	<style>
+		/* ── Labels ── */
+		.sec-lbl { font-family:monospace; font-size:.71em; letter-spacing:.12em; text-transform:uppercase;
+			opacity:.4; border-bottom:1px solid rgba(255,255,255,.08); padding-bottom:.45em; margin:1.8em 0 .9em; }
 
-			/* Project list cards */
-			.proj-list { list-style:none; padding:0; margin-bottom:2em; }
-			.proj-item { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);
-				border-radius:6px; padding:1em 1.2em; margin-bottom:0.7em; }
-			.proj-item h4 { margin:0.3em 0 0.3em; font-size:1em; }
-			.proj-item p { margin:0; font-size:0.85em; opacity:0.6; }
-			.proj-meta { font-family:monospace; font-size:0.72em; opacity:0.45; }
+		/* ── Badges ── */
+		.bdg { display:inline-block; font-family:monospace; font-size:.68em; padding:.18em .55em;
+			border-radius:4px; font-weight:700; margin-right:.35em; vertical-align:middle; }
+		.bdg-st  { background:rgba(255,112,67,.14);  color:#ff7043; border:1px solid rgba(255,112,67,.3); }
+		.bdg-ap  { background:rgba(0,214,143,.12);   color:#00d68f; border:1px solid rgba(0,214,143,.3); }
+		.bdg-tp  { background:rgba(30,144,255,.12);  color:#1e90ff; border:1px solid rgba(30,144,255,.3); }
+		.bdg-star{ background:rgba(250,204,21,.12);  color:#facc15; border:1px solid rgba(250,204,21,.3); }
 
-			/* Detail sections */
-			.detail-block { background:rgba(255,255,255,0.03); border-left:3px solid rgba(255,255,255,0.15);
-				padding:1.2em 1.5em; margin-bottom:1.5em; border-radius:0 6px 6px 0; }
-			.detail-block.oral { border-left-color:#00d68f; }
-			.detail-block h3 { margin-top:0; }
+		/* ── Accordion ── */
+		.acc { border:1px solid rgba(255,255,255,.09); border-radius:6px; margin-bottom:.6em; overflow:hidden; }
+		.acc-hd { display:flex; align-items:center; gap:.9em; padding:.85em 1.1em;
+			cursor:pointer; background:rgba(255,255,255,.04); transition:background .18s; user-select:none; }
+		.acc-hd:hover { background:rgba(255,255,255,.08); }
+		.acc-hd .title { flex:1; font-size:.93em; font-weight:600; margin:0; }
+		.acc-hd .meta  { font-family:monospace; font-size:.7em; opacity:.4; white-space:nowrap; }
+		.acc-arrow { color:rgba(255,255,255,.35); font-size:.9em; transition:transform .22s; flex-shrink:0; }
+		.acc.open .acc-arrow { transform:rotate(180deg); }
+		.acc-bd { max-height:0; overflow:hidden; transition:max-height .32s ease, padding .3s ease;
+			padding:0 1.1em; font-size:.87em; line-height:1.75; }
+		.acc.open .acc-bd { max-height:2000px; padding:.85em 1.1em 1.1em; }
+		.acc-bd ul { list-style:none; padding:0; margin:.5em 0 0; }
+		.acc-bd ul li { padding-left:1.2em; position:relative; margin-bottom:.3em; }
+		.acc-bd ul li::before { content:'▸'; position:absolute; left:0; color:#00d68f; }
 
-			.section-label { font-family:monospace; font-size:0.72em; letter-spacing:0.12em; text-transform:uppercase;
-				opacity:0.45; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:0.5em; margin-bottom:1em; }
+		/* ── Sub-accordion (missions) ── */
+		.sacc { border:1px solid rgba(255,255,255,.06); border-radius:5px; margin-bottom:.45em; overflow:hidden; }
+		.sacc-hd { display:flex; align-items:center; gap:.7em; padding:.65em .9em;
+			cursor:pointer; background:rgba(255,255,255,.03); transition:background .15s; }
+		.sacc-hd:hover { background:rgba(255,255,255,.06); }
+		.sacc-hd .mn { font-family:monospace; font-size:.68em; background:rgba(0,214,143,.1);
+			color:#00d68f; padding:.15em .45em; border-radius:3px; white-space:nowrap; }
+		.sacc-hd h4 { flex:1; font-size:.86em; font-weight:600; margin:0; }
+		.sacc-arr { color:rgba(255,255,255,.3); transition:transform .2s; font-size:.85em; }
+		.sacc.open .sacc-arr { transform:rotate(180deg); }
+		.sacc-bd { max-height:0; overflow:hidden; transition:max-height .28s ease, padding .28s ease;
+			padding:0 .9em; font-size:.85em; line-height:1.7; }
+		.sacc.open .sacc-bd { max-height:800px; padding:.7em .9em .9em; }
+		.sacc-bd ul { list-style:none; padding:0; margin:.4em 0 0; }
+		.sacc-bd ul li { padding-left:1.1em; position:relative; margin-bottom:.25em; }
+		.sacc-bd ul li::before { content:'▸'; position:absolute; left:0; color:#00d68f; }
 
-			/* Infra box */
-			.infra-box { background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.1); border-radius:6px;
-				padding:1em 1.2em; font-family:monospace; font-size:0.78em; line-height:1.9; overflow-x:auto; margin:0.8em 0; }
-			.infra-box .z { color:#00d68f; font-weight:700; }
-			.infra-box .ip { color:#1e90ff; }
-			.infra-box .sv { color:#eaf2ff; }
+		/* ── Comp tags ── */
+		.comp-tags { display:flex; flex-wrap:wrap; gap:.4em; margin-top:.8em; }
+		.ctag { font-size:.71em; padding:.23em .62em; border-radius:20px; font-weight:700; font-family:monospace; }
+		.c1 { background:rgba(0,214,143,.1);  color:#00d68f; border:1px solid rgba(0,214,143,.2); }
+		.c2 { background:rgba(30,144,255,.1); color:#1e90ff; border:1px solid rgba(30,144,255,.2); }
+		.c3 { background:rgba(167,139,250,.1);color:#a78bfa; border:1px solid rgba(167,139,250,.2); }
+		.c4 { background:rgba(255,112,67,.1); color:#ff7043; border:1px solid rgba(255,112,67,.2); }
+		.c5 { background:rgba(250,204,21,.1); color:#facc15; border:1px solid rgba(250,204,21,.2); }
+		.c6 { background:rgba(236,72,153,.1); color:#ec4899; border:1px solid rgba(236,72,153,.2); }
 
-			/* Accordion */
-			.accordion { border:1px solid rgba(255,255,255,0.08); border-radius:6px; margin-bottom:0.6em; overflow:hidden; }
-			.accordion-header { display:flex; align-items:center; gap:0.8em; padding:0.8em 1em; cursor:pointer;
-				background:rgba(255,255,255,0.04); transition:background 0.2s; }
-			.accordion-header:hover { background:rgba(255,255,255,0.07); }
-			.accordion-header .mn { font-family:monospace; font-size:0.7em; background:rgba(0,214,143,0.1);
-				color:#00d68f; padding:0.18em 0.5em; border-radius:4px; white-space:nowrap; }
-			.accordion-header h4 { flex:1; margin:0; font-size:0.9em; }
-			.accordion-toggle { color:rgba(255,255,255,0.4); transition:transform 0.2s; font-size:1em; }
-			.accordion.open .accordion-toggle { transform:rotate(180deg); }
-			.accordion-body { padding:0 1em; max-height:0; overflow:hidden; transition:max-height 0.3s ease, padding 0.3s ease;
-				font-size:0.87em; line-height:1.7; }
-			.accordion.open .accordion-body { max-height:800px; padding:0.8em 1em 1em; }
-			.accordion-body ul { list-style:none; padding:0; margin:0.5em 0 0; }
-			.accordion-body ul li { padding-left:1.2em; position:relative; margin-bottom:0.3em; }
-			.accordion-body ul li::before { content:'▸'; position:absolute; left:0; color:#00d68f; }
+		/* ── Infra box ── */
+		.infra { background:rgba(0,0,0,.35); border:1px solid rgba(255,255,255,.09);
+			border-radius:5px; padding:.9em 1.1em; font-family:monospace; font-size:.76em;
+			line-height:1.9; overflow-x:auto; margin:.7em 0; }
+		.infra .z  { color:#00d68f; font-weight:700; }
+		.infra .ip { color:#1e90ff; }
 
-			/* Comp tags */
-			.comp-tags { display:flex; flex-wrap:wrap; gap:0.4em; margin-top:0.8em; }
-			.ctag { font-size:0.72em; padding:0.25em 0.65em; border-radius:20px; font-weight:700; font-family:monospace; }
-			.c1 { background:rgba(0,214,143,0.1); color:#00d68f; border:1px solid rgba(0,214,143,0.25); }
-			.c2 { background:rgba(30,144,255,0.1); color:#1e90ff; border:1px solid rgba(30,144,255,0.25); }
-			.c3 { background:rgba(167,139,250,0.1); color:#a78bfa; border:1px solid rgba(167,139,250,0.25); }
-			.c4 { background:rgba(255,112,67,0.1); color:#ff7043; border:1px solid rgba(255,112,67,0.25); }
-			.c5 { background:rgba(250,204,21,0.1); color:#facc15; border:1px solid rgba(250,204,21,0.25); }
-			.c6 { background:rgba(236,72,153,0.1); color:#ec4899; border:1px solid rgba(236,72,153,0.25); }
+		/* ── GSB context box ── */
+		.gsb-ctx { background:rgba(0,214,143,.04); border:1px solid rgba(0,214,143,.15);
+			border-radius:8px; padding:1.4em 1.6em; margin-bottom:2em; }
+		.gsb-ctx h3 { margin-top:0; color:#00d68f; }
+		.gsb-schema { max-width:100%; border-radius:6px; border:1px solid rgba(255,255,255,.1);
+			margin-top:1em; display:block; }
 
-			.tech-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0.5em; margin:0.8em 0; }
-			.tech-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08);
-				border-radius:5px; padding:0.55em 0.8em; }
-			.tech-box .tk { font-family:monospace; font-size:0.68em; opacity:0.5; margin-bottom:0.15em; }
-			.tech-box .tv { font-size:0.8em; font-weight:600; }
-			@media (max-width:600px) { .tech-grid { grid-template-columns:repeat(2,1fr); } }
+		/* ── Oral highlight ── */
+		.oral-detail { border-left:3px solid #00d68f; padding-left:1.4em; margin-bottom:2.5em; }
 
-			hr.section-sep { border:none; border-top:2px solid rgba(255,255,255,0.06); margin:2.5em 0; }
-		</style>
-	</head>
-	<body class="is-preload">
-		<div id="wrapper">
+		hr.sep { border:none; border-top:1px solid rgba(255,255,255,.07); margin:2.5em 0; }
+	</style>
+</head>
+<body class="is-preload">
+<div id="wrapper">
 
-			<header id="header">
-				<a href="index.html" class="logo"><strong>Portfolio</strong> <span>CERTA Yohan</span></a>
-				<nav><a href="#menu">Menu</a></nav>
-			</header>
+	<header id="header">
+		<a href="index.html" class="logo"><strong>Portfolio</strong> <span>CERTA Yohan</span></a>
+		<nav><a href="#menu">Menu</a></nav>
+	</header>
 
-			<nav id="menu">
-				<ul class="links">
-					<li><a href="index.html">Accueil</a></li>
-					<li><a href="profil.html">Profil</a></li>
-					<li><a href="projets.html">Projets</a></li>
-					<li><a href="contact.html">Contact</a></li>
-				</ul>
-			</nav>
+	<nav id="menu">
+		<ul class="links">
+			<li><a href="index.html">Accueil</a></li>
+			<li><a href="profil.html">Profil</a></li>
+			<li><a href="projets.html">Projets</a></li>
+			<li><a href="contact.html">Contact</a></li>
+		</ul>
+		<ul class="actions stacked">
+			<li><a href="profil.html" class="button primary fit">Mon Profil</a></li>
+			<li><a href="contact.html" class="button fit">Me contacter</a></li>
+		</ul>
+	</nav>
 
-			<div id="main" class="alt">
-				<section id="one">
-					<div class="inner">
-						<header class="major">
-							<h1>Projets</h1>
-						</header>
-						<p>Ensemble des réalisations durant le BTS SIO SISR — <strong>3 projets sélectionnés pour l'oral E6</strong> sont présentés en détail ci-dessous.</p>
+	<div id="main" class="alt">
+	<section id="one">
+	<div class="inner">
 
-						<!-- ── LISTE TOUS LES PROJETS ── -->
-						<h4 class="section-label">Tous les projets</h4>
-						<ul class="proj-list">
-							<li class="proj-item">
-								<span class="badge badge-stage">Stage 2ème année</span>
-								<span class="badge badge-star">⭐ Oral E6</span>
-								<h4>Stage — Déploiement de postes (FOG Project)</h4>
-								<p>Lycée Sidoine Apollinaire — Fév. – Avr. 2026<br/>Déploiement ~60 postes Windows 11 via PXE/Multicast, supervision Zabbix + Veyon.</p>
-							</li>
-							<li class="proj-item">
-								<span class="badge badge-tp">TP</span>
-								<span class="badge badge-star">⭐ Oral E6</span>
-								<h4>GLPI + OCS Inventory NG — Gestion de parc</h4>
-								<p>Lycée Sidoine Apollinaire — Janv. 2026<br/>Mise en place GLPI + OCS pour la section BTS SIO. Gestion parc, tickets, profils utilisateurs.</p>
-							</li>
-							<li class="proj-item">
-								<span class="badge badge-ap">AP — Fiche E6</span>
-								<span class="badge badge-star">⭐ Oral E6</span>
-								<h4>GSB — HAProxy + Nagios (Fiches E6 n°1 &amp; n°2)</h4>
-								<p>GSB-DIJON-2 — Nov. – Déc. 2025<br/>Load balancer HAProxy (50/50 Round Robin) + supervision Nagios en DMZ.</p>
-							</li>
-							<li class="proj-item">
-								<span class="badge badge-stage">Stage 1ère année</span>
-								<h4>Stage — Walden Digital, Clermont-Ferrand</h4>
-								<p>Mai – Juin 2025 — Stage BTS SIO/SISR en entreprise. <em>Rapport à venir.</em></p>
-							</li>
-							<li class="proj-item">
-								<span class="badge badge-ap">AP GSB</span>
-								<h4>GSB — Infrastructure de base (Missions 1 à 3)</h4>
-								<p>Sept. – Nov. 2025 — IPFire, AD/DHCP/DNS, blacklist web, proxy transparent, redirections RDP/SSH/HTTP.</p>
-							</li>
-							<li class="proj-item">
-								<span class="badge badge-ap">AP GSB</span>
-								<h4>GSB — AD avancé, GPO, partages réseau (Mission 5)</h4>
-								<p>Janv. 2026 — UO, groupes, utilisateurs, scripts NETLOGON, GPO, partages réseau.</p>
-							</li>
-							<li class="proj-item">
-								<span class="badge badge-tp">RP 1.1</span>
-								<h4>Site HTML « Publicité »</h4>
-								<p>12/09/2024 – 07/11/2024 — Site web statique HTML/CSS. Travail en mode projet.</p>
-							</li>
-							<li class="proj-item">
-								<span class="badge badge-tp">RP 1.2</span>
-								<h4>CSS Zen Garden</h4>
-								<p>07/11/2024 – 19/12/2024 — Mise en forme créative via CSS uniquement. Veille technologique.</p>
-							</li>
-							<li class="proj-item">
-								<span class="badge badge-tp">RP 2.1</span>
-								<h4>Logiciel Apprentissage Calcul</h4>
-								<p>09/01/2025 – 13/03/2025 — Maintenance et déploiement d'un logiciel pédagogique.</p>
-							</li>
-							<li class="proj-item">
-								<span class="badge badge-tp">RP 2.2</span>
-								<h4>Maintenance corrective et évolutive de jeux</h4>
-								<p>07/03/2025 – 07/05/2025 — Correction bugs, ajout fonctionnalités, tests d'intégration.</p>
-							</li>
-							<li class="proj-item">
-								<span class="badge badge-tp">RP 2.3</span>
-								<h4>Veille technologique — Journal</h4>
-								<p>19/09/2024 – 16/01/2025 — Journal de veille sur réseaux, systèmes et cybersécurité.</p>
-							</li>
-						</ul>
+		<header class="major"><h1>Projets</h1></header>
+		<p>Ensemble des réalisations sur les deux années de BTS SIO SISR. Les <strong>3 projets sélectionnés pour l'oral E6</strong> sont présentés en détail.</p>
 
-						<hr class="section-sep"/>
-
-						<!-- ════ DETAIL 1 : STAGE FOG ════ -->
-						<div class="detail-block oral">
-							<h4 class="section-label">Projet présenté en détail — 1/3</h4>
-							<span class="badge badge-stage">Stage 2ème année</span>
-							<span class="badge badge-star">⭐ Oral E6</span>
-							<h3 style="margin-top:0.8em;">Stage — Déploiement de postes (FOG Project)</h3>
-							<p style="opacity:0.7;font-size:0.9em;">Lycée Sidoine Apollinaire, Clermont-Ferrand — 23 fév. au 3 avr. 2026 — Binôme : Yanis Noël — Tuteur : M. Rochon</p>
-
-							<h4 class="section-label">Contexte</h4>
-							<p>Stage de 6 semaines au Lycée Sidoine Apollinaire. Mission : déployer une image <strong>Windows 11 standardisée</strong> sur ~60 postes dans 3 salles (S-402, S-405, S-406) via un serveur <strong>FOG Project</strong> (clonage réseau PXE/Multicast). Machines : PC TERRA (DDR5, 1 To). Travail en totale autonomie.</p>
-
-							<h4 class="section-label">Architecture réseau</h4>
-							<div class="infra-box">
-<span class="z">Réseau dédié — 192.168.10.0/24</span>
-  <span class="sv">Serveur FOG</span>      <span class="ip">192.168.10.12</span>  — VM Debian 11, déploiement PXE/Multicast
-  <span class="sv">Windows Server</span>   <span class="ip">192.168.10.20</span>  — VM, DHCP (opt. 066/067 PXE)
-  <span class="sv">Routeur Cisco</span>    <span class="ip">192.168.10.254</span> — Passerelle
-  <span class="sv">Plage DHCP</span>       <span class="ip">192.168.10.40–100</span> — Postes clients PXE
-							</div>
-
-							<h4 class="section-label">Logiciels dans l'image master</h4>
-							<div class="tech-grid">
-								<div class="tech-box"><div class="tk">Réseau</div><div class="tv">Cisco Packet Tracer · Wireshark</div></div>
-								<div class="tech-box"><div class="tk">Développement</div><div class="tv">Visual Studio 2026 · VS Code · Notepad++</div></div>
-								<div class="tech-box"><div class="tk">Virtualisation</div><div class="tv">VMware Workstation · VirtualBox</div></div>
-								<div class="tech-box"><div class="tk">Web local</div><div class="tv">WAMP + PHP</div></div>
-								<div class="tech-box"><div class="tk">Utilitaires</div><div class="tv">Chrome · CCleaner</div></div>
-							</div>
-
-							<h4 class="section-label">Phases du projet</h4>
-							<div class="accordion open">
-								<div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
-									<span class="mn">Phase 1</span><h4>Analyse &amp; planification (GANTT)</h4><span class="accordion-toggle">▾</span>
-								</div>
-								<div class="accordion-body">Inventaire matériel (PC TERRA, switch + routeur Cisco), choix de FOG Project v1.5.10, élaboration d'un <strong>diagramme de Gantt</strong> sur 6 semaines. Planification salle par salle selon les créneaux de disponibilité.</div>
-							</div>
-							<div class="accordion">
-								<div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
-									<span class="mn">Phase 2</span><h4>Infrastructure réseau</h4><span class="accordion-toggle">▾</span>
-								</div>
-								<div class="accordion-body"><ul>
-									<li>Installation du <strong>serveur FOG</strong> (VM Debian 11, IP statique 192.168.10.12).</li>
-									<li>Config <strong>DHCP Windows Server</strong> : option 066 → 192.168.10.12, option 067 → ipxe.efi.</li>
-									<li>Configuration <strong>switch + routeur Cisco</strong> pour le réseau de déploiement.</li>
-								</ul></div>
-							</div>
-							<div class="accordion">
-								<div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
-									<span class="mn">Phase 3</span><h4>PC Master + Sysprep</h4><span class="accordion-toggle">▾</span>
-								</div>
-								<div class="accordion-body">Installation Windows 11 + logiciels sur le PC Master. Généralisation via <strong>Sysprep</strong> (OOBE + « Généraliser ») pour réinitialiser le SID et éviter les conflits réseau/AD. PC éteint immédiatement, jamais redémarré sur Windows avant capture.</div>
-							</div>
-							<div class="accordion">
-								<div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
-									<span class="mn">Phase 4</span><h4>Capture (~70 Go) + tests Unicast</h4><span class="accordion-toggle">▾</span>
-								</div>
-								<div class="accordion-body">Capture via boot PXE (Quick Registration + tâche FOG). Image ~70 Go. Tests <strong>Unicast</strong> sur 1-2 postes : validation drivers, logiciels, nommage.</div>
-							</div>
-							<div class="accordion">
-								<div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
-									<span class="mn">Phase 5</span><h4>Déploiement Multicast (~60 postes)</h4><span class="accordion-toggle">▾</span>
-								</div>
-								<div class="accordion-body"><ul>
-									<li>Config BIOS : boot UEFI LAN prioritaire, Network Stack IPv4, Secure Boot désactivé.</li>
-									<li>Enregistrement postes via <strong>Quick Registration and Inventory</strong> FOG.</li>
-									<li>Déploiement <strong>Multicast</strong> salle par salle (~20 postes simultanément).</li>
-									<li>Post-déploiement : intégration au <strong>domaine Active Directory</strong> du lycée.</li>
-								</ul></div>
-							</div>
-							<div class="accordion">
-								<div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
-									<span class="mn">Phase 6</span><h4>Tâches complémentaires</h4><span class="accordion-toggle">▾</span>
-								</div>
-								<div class="accordion-body"><ul>
-									<li><strong>Veyon</strong> : supervision des postes élèves (contrôle distant, partage écran, verrouillage).</li>
-									<li><strong>Zabbix</strong> : supervision infrastructure réseau du lycée (alertes, monitoring services).</li>
-								</ul></div>
-							</div>
-
-							<h4 class="section-label" style="margin-top:1.2em;">Compétences</h4>
-							<div class="comp-tags">
-								<span class="ctag c1">C1 — Gérer le patrimoine informatique</span>
-								<span class="ctag c4">C4 — Travailler en mode projet</span>
-								<span class="ctag c5">C5 — Mettre à disposition un service</span>
-								<span class="ctag c6">C6 — Développement professionnel</span>
-							</div>
-						</div>
-
-						<!-- ════ DETAIL 2 : GLPI ════ -->
-						<div class="detail-block oral">
-							<h4 class="section-label">Projet présenté en détail — 2/3</h4>
-							<span class="badge badge-tp">TP</span>
-							<span class="badge badge-star">⭐ Oral E6</span>
-							<h3 style="margin-top:0.8em;">GLPI + OCS Inventory NG — Gestion de parc</h3>
-							<p style="opacity:0.7;font-size:0.9em;">Lycée Sidoine Apollinaire, Clermont-Ferrand — Janvier 2026 — Binôme : Joshua</p>
-
-							<h4 class="section-label">Contexte</h4>
-							<p>Mission : concevoir et déployer une infrastructure de <strong>gestion de parc informatique</strong> pour la section BTS SIO du lycée, à l'aide de GLPI couplé à OCS Inventory NG pour l'inventaire automatisé.</p>
-
-							<h4 class="section-label">Architecture technique</h4>
-							<div class="infra-box">
-<span class="z">Serveur Debian (srv-bts-sio)</span>
-  Apache2 + PHP + MariaDB
-  OCS Inventory NG   — Inventaire automatisé (agent → serveur)
-  GLPI 10.0.14       — Gestion parc + tickets d'incidents
-  Plugin OCSNG 2.0.5 — Interconnexion OCS ↔ GLPI
-
-<span class="z">Entités :</span> BTS SIO > Salle B-405 / B-406 / B-407
-							</div>
-
-							<h4 class="section-label">Organisation mise en place</h4>
-							<div class="accordion open">
-								<div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
-									<span class="mn">Entités</span><h4>Structure organisationnelle</h4><span class="accordion-toggle">▾</span>
-								</div>
-								<div class="accordion-body">Entité racine <strong>BTS SIO</strong> avec sous-entités : <strong>Salle B-405, B-406, B-407</strong>. Permet de localiser chaque incident précisément et de cibler les interventions.</div>
-							</div>
-							<div class="accordion">
-								<div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
-									<span class="mn">Profils</span><h4>Gestion des droits utilisateurs</h4><span class="accordion-toggle">▾</span>
-								</div>
-								<div class="accordion-body"><ul>
-									<li><strong>Étudiants</strong> : création et suivi de leurs propres tickets uniquement.</li>
-									<li><strong>Enseignants</strong> : vue globale sur tous les tickets de leur entité.</li>
-									<li><strong>Administrateurs/Techniciens</strong> : gestion complète du parc et des tickets.</li>
-								</ul></div>
-							</div>
-							<div class="accordion">
-								<div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
-									<span class="mn">OCS</span><h4>Inventaire automatisé</h4><span class="accordion-toggle">▾</span>
-								</div>
-								<div class="accordion-body">Agents OCS sur les postes Windows → remontée automatique des infos matérielles (CPU, RAM, disque) et logicielles (OS, licences, domaine). Chaque équipement est lié à son historique de maintenance dans GLPI.</div>
-							</div>
-							<div class="accordion">
-								<div class="accordion-header" onclick="this.parentElement.classList.toggle('open')">
-									<span class="mn">Tickets</span><h4>Cycle de vie des incidents</h4><span class="accordion-toggle">▾</span>
-								</div>
-								<div class="accordion-body">
-									Cycle : <strong>Création → Attribution → En Attente → Résolution → Clôture</strong>
-									<ul style="margin-top:0.5em;">
-										<li><em>Cas 1</em> : "PC ne démarre pas" (Salle B-407) — ouverture étudiant, résolution technicien, clôture documentée.</li>
-										<li><em>Cas 2</em> : Visibilité selon profil — étudiant voit uniquement son ticket, enseignant voit tous les tickets de son entité.</li>
-									</ul>
-								</div>
-							</div>
-
-							<h4 class="section-label" style="margin-top:1.2em;">Compétences</h4>
-							<div class="comp-tags">
-								<span class="ctag c1">C1 — Gérer le patrimoine informatique</span>
-								<span class="ctag c2">C2 — Répondre aux incidents</span>
-								<span class="ctag c5">C5 — Mettre à disposition un service</span>
-								<span class="ctag c6">C6 — Développement professionnel</span>
-							</div>
-						</div>
-
-						<!-- ════ DETAIL 3 : HAPROXY + NAGIOS ════ -->
-						<div class="detail-block oral">
-							<h4 class="section-label">Projet présenté en détail — 3/3</h4>
-							<span class="badge badge-ap">AP — Fiche E6 n°1</span>
-							<span class="badge badge-ap">AP — Fiche E6 n°2</span>
-							<span class="badge badge-star">⭐ Oral E6</span>
-							<h3 style="margin-top:0.8em;">GSB — HAProxy + Nagios</h3>
-							<p style="opacity:0.7;font-size:0.9em;">GSB-DIJON-2, Lycée Sidoine Apollinaire — Nov.–Déc. 2025 — Binôme : Yanis Noël — N° candidat : 2602989488</p>
-
-							<h4 class="section-label">Contexte</h4>
-							<p>Dans le cadre de l'AP GSB (agence <strong>GSB-DIJON-2</strong>), deux missions font l'objet des <strong>fiches E6 officielles</strong> : HAProxy (Fiche n°1) et Nagios (Fiche n°2), déployées en zone DMZ de l'infrastructure réseau de l'agence.</p>
-
-							<h4 class="section-label">Infrastructure GSB-DIJON-2</h4>
-							<div class="infra-box">
-<span class="z">LAN — VLAN 1203 — </span><span class="ip">192.168.227.96/28</span>
-  <span class="sv">WINSRVAD-DIJON</span>  <span class="ip">192.168.227.97</span>   — AD DS / DHCP / DNS / w32tm
-  <span class="sv">Win10 (PC1,2,3)</span> <span class="ip">192.168.227.101–104</span> — DHCP
-
-<span class="z">DMZ — VLAN 1211 — </span><span class="ip">10.31.2.0/24</span>
-  <span class="sv">SRVWEBSSH</span>       <span class="ip">10.69.2.1</span>   — Apache2 + SSH
-  <span class="sv">SRVWEBSSH_2</span>     <span class="ip">10.69.2.2</span>   — Apache2
-  <span class="sv">SRVHAPROXY</span>      <span class="ip">10.69.2.3</span>   — HAProxy (Round Robin 50/50)
-  <span class="sv">SRVNAGIOS</span>       <span class="ip">10.69.2.4</span>   — Supervision (CPU/RAM/disk/HTTP)
-  <span class="sv">IPFIRE (DMZ)</span>    <span class="ip">10.69.2.254</span>
-
-<span class="z">vSphere :</span> Datacenter_SIO63\E2\AP CERTA NOEL
-							</div>
-
-							<h4 class="section-label">Fiche E6 n°1 — HAProxy (03/11/2025 – 18/11/2025)</h4>
-							<ul style="font-size:0.88em;margin-bottom:1em;">
-								<li>Installation de <strong>HAProxy</strong> sur VM Debian en DMZ (10.69.2.3).</li>
-								<li>Frontend : écoute port 80 sur l'IP du HAProxy.</li>
-								<li>Backend : algorithme <em>roundrobin</em> 50/50 entre SRVWEBSSH et SRVWEBSSH_2.</li>
-								<li>DNS <strong>Dnsmasq</strong> : résolution <em>gsb-dijon-2-web.com</em> → 10.69.2.3.</li>
-								<li>Tests : alternance visible entre les deux serveurs à chaque requête HTTP.</li>
-								<li>Config avancée : simulation serveur 3× moins puissant (pondération roundrobin).</li>
-							</ul>
-
-							<h4 class="section-label">Fiche E6 n°2 — Nagios (01/12/2025 – 16/12/2025)</h4>
-							<ul style="font-size:0.88em;margin-bottom:1em;">
-								<li>Installation de <strong>Nagios</strong> sur VM Debian en DMZ (10.69.2.4).</li>
-								<li>Protocoles : <strong>NRPE</strong> (Linux), <strong>NSClient++</strong> (Windows), <strong>ICMP</strong> (ping).</li>
-								<li>Éléments supervisés : <em>charge CPU, RAM, espace disque, service HTTP</em>.</li>
-								<li>Cibles : SRVWEBSSH, SRVWEBSSH_2, SRVHAPROXY, WINSRVAD-DIJON.</li>
-								<li>Alertes temps réel accessibles depuis l'interface web (LAN admin).</li>
-							</ul>
-
-							<h4 class="section-label" style="margin-top:1.2em;">Compétences</h4>
-							<div class="comp-tags">
-								<span class="ctag c1">C1 — Gérer le patrimoine informatique</span>
-								<span class="ctag c2">C2 — Répondre aux incidents</span>
-								<span class="ctag c4">C4 — Travailler en mode projet</span>
-								<span class="ctag c5">C5 — Mettre à disposition un service</span>
-							</div>
-						</div>
-
-					</div>
-				</section>
-			</div>
-
-			<footer id="footer">
-				<div class="inner">
-					<ul class="icons">
-						<li><a href="https://github.com/yohan-cta/portfolio" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-					</ul>
-					<ul class="copyright">
-						<li>&copy; CERTA Yohan — BTS SIO SISR 2026</li>
-					</ul>
-				</div>
-			</footer>
-
+		<!-- ════════════════════════════════════
+		     CONTEXTE GSB
+		════════════════════════════════════ -->
+		<div class="gsb-ctx">
+			<h3>🏭 Contexte GSB — Galaxy Swiss Bourdin</h3>
+			<p>Le laboratoire pharmaceutique <strong>Galaxy Swiss Bourdin (GSB)</strong>, issu de la fusion entre Galaxy et Swiss Bourdin, a pour projet d'implanter des agences dans 3 grandes villes françaises (Bordeaux, Dijon, Toulouse). Chaque agence dispose d'un réseau autonome géré par une équipe de techniciens. En tant que binôme <strong>CERTA Yohan &amp; Noël Yanis</strong>, nous sommes responsables de l'agence <strong>GSB-DIJON-2</strong> (domaine : GSB-DIJON-2.coop). Les projets labellisés <span class="bdg bdg-ap">AP GSB</span> correspondent aux différentes missions réalisées sur cette infrastructure.</p>
+			<img src="schema_gsb.png" alt="Schéma réseau GSB-DIJON-2" class="gsb-schema"/>
 		</div>
 
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.scrolly.min.js"></script>
-		<script src="assets/js/jquery.scrollex.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
-	</body>
+		<!-- ════════════════════════════════════
+		     1ERE ANNEE
+		════════════════════════════════════ -->
+		<p class="sec-lbl">Première année — 2024/2025</p>
+
+		<!-- Stage Walden -->
+		<div class="acc open">
+			<div class="acc-hd" onclick="tog(this)">
+				<span class="bdg bdg-st">Stage 1ère année</span>
+				<span class="bdg bdg-star">⭐ Oral E6</span>
+				<span class="title">Stage — Walden Digital, Clermont-Ferrand</span>
+				<span class="meta">19 mai – 27 juin 2025</span>
+				<span class="acc-arrow">▾</span>
+			</div>
+			<div class="acc-bd">
+				<p>Intégration à l'équipe support de Walden Digital, entreprise IT du groupe européen Walden (transport et logistique pharmaceutique : Movianto, ETP, Ciblex, Relais Colis…).</p>
+				<ul>
+					<li>Gestion de tickets via <strong>Zendesk</strong> : dépannage niveau 1, prise en main à distance (TeamViewer)</li>
+					<li>Déploiement de postes HP Windows 11 : image système, LAPS, BitLocker, Active Directory, Malwarebytes</li>
+					<li>Configuration de <strong>PDA</strong> (Zebra TC25, M3 Mobile) via <strong>SOTI MobiControl</strong> (MDM)</li>
+					<li>Configuration d'imprimantes industrielles SATO (IP, liste de diffusion)</li>
+					<li>Interventions sur sites Movianto (Sarlièves, Quantum, Siège)</li>
+					<li>Supervision réseau avec <strong>Centreon</strong></li>
+				</ul>
+				<div class="comp-tags">
+					<span class="ctag c1">C1 — Gérer le patrimoine informatique</span>
+					<span class="ctag c2">C2 — Répondre aux incidents</span>
+					<span class="ctag c6">C6 — Développement professionnel</span>
+				</div>
+			</div>
+		</div>
+
+		<!-- CSS Zen Garden -->
+		<div class="acc">
+			<div class="acc-hd" onclick="tog(this)">
+				<span class="bdg bdg-tp">RP 1.2</span>
+				<span class="title">CSS Zen Garden</span>
+				<span class="meta">Nov. – Déc. 2024</span>
+				<span class="acc-arrow">▾</span>
+			</div>
+			<div class="acc-bd">
+				<p>Mise en forme créative d'un document HTML fixe via CSS uniquement, sans modifier le HTML. Travail sur l'identité visuelle, la typographie et la mise en page.</p>
+				<div class="comp-tags">
+					<span class="ctag c3">C3 — Présence en ligne</span>
+					<span class="ctag c6">C6 — Développement professionnel</span>
+				</div>
+			</div>
+		</div>
+
+		<!-- TeckSio -->
+		<div class="acc">
+			<div class="acc-hd" onclick="tog(this)">
+				<span class="bdg bdg-ap">AP</span>
+				<span class="title">TeckSio — Infrastructure Réseau Entreprise</span>
+				<span class="meta">2024/2025</span>
+				<span class="acc-arrow">▾</span>
+			</div>
+			<div class="acc-bd">
+				<p>Mise en place d'une infrastructure réseau pour l'entreprise TeckSio. Recensement des ressources, exploitation des référentiels, traitement des demandes réseau.</p>
+				<div class="comp-tags">
+					<span class="ctag c1">C1 — Gérer le patrimoine informatique</span>
+					<span class="ctag c4">C4 — Travailler en mode projet</span>
+				</div>
+			</div>
+		</div>
+
+		<!-- Site HTML Publicité -->
+		<div class="acc">
+			<div class="acc-hd" onclick="tog(this)">
+				<span class="bdg bdg-tp">RP 1.1</span>
+				<span class="title">Site HTML « Publicité »</span>
+				<span class="meta">Sept. – Nov. 2024</span>
+				<span class="acc-arrow">▾</span>
+			</div>
+			<div class="acc-bd">
+				<p>Conception et développement d'un site web statique HTML/CSS sur la thématique publicitaire. Travail en mode projet : planification, répartition des tâches, mise en ligne.</p>
+				<div class="comp-tags">
+					<span class="ctag c3">C3 — Présence en ligne</span>
+					<span class="ctag c4">C4 — Travailler en mode projet</span>
+					<span class="ctag c6">C6 — Développement professionnel</span>
+				</div>
+			</div>
+		</div>
+
+		<!-- ════════════════════════════════════
+		     2EME ANNEE
+		════════════════════════════════════ -->
+		<p class="sec-lbl">Deuxième année — 2025/2026</p>
+
+		<!-- Stage FOG -->
+		<div class="acc open">
+			<div class="acc-hd" onclick="tog(this)">
+				<span class="bdg bdg-st">Stage 2ème année</span>
+				<span class="bdg bdg-star">⭐ Oral E6</span>
+				<span class="title">Stage — Déploiement de postes (FOG Project)</span>
+				<span class="meta">Fév. – Avr. 2026</span>
+				<span class="acc-arrow">▾</span>
+			</div>
+			<div class="acc-bd">
+				<p>Lycée Sidoine Apollinaire — Déploiement de ~60 postes Windows 11 via <strong>FOG Project</strong> (PXE/Multicast) sur 3 salles informatiques (S-402, S-405, S-406). Binôme : Yanis Noël.</p>
+				<ul>
+					<li>Infrastructure réseau dédiée : serveur FOG (Debian, 192.168.10.12), DHCP Windows Server (options PXE 066/067), routeur Cisco</li>
+					<li>Préparation du <strong>PC Master</strong> + <strong>Sysprep</strong> (OOBE/Généraliser) pour réinitialiser le SID</li>
+					<li>Capture de l'image (~70 Go), tests Unicast, puis déploiement <strong>Multicast</strong> (~20 postes simultanés)</li>
+					<li>Post-déploiement : intégration au domaine <strong>Active Directory</strong> du lycée</li>
+					<li>Supervision des postes élèves avec <strong>Veyon</strong> et monitoring réseau avec <strong>Zabbix</strong></li>
+				</ul>
+				<div class="comp-tags">
+					<span class="ctag c1">C1 — Gérer le patrimoine informatique</span>
+					<span class="ctag c4">C4 — Travailler en mode projet</span>
+					<span class="ctag c5">C5 — Mettre à disposition un service</span>
+					<span class="ctag c6">C6 — Développement professionnel</span>
+				</div>
+			</div>
+		</div>
+
+		<!-- Windows Server AD -->
+		<div class="acc">
+			<div class="acc-hd" onclick="tog(this)">
+				<span class="bdg bdg-ap">AP GSB</span>
+				<span class="title">Windows Server 2019 — AD, DHCP, DNS, GPO</span>
+				<span class="meta">2025/2026</span>
+				<span class="acc-arrow">▾</span>
+			</div>
+			<div class="acc-bd">
+				<p>Mise en place et administration complète du serveur Windows de l'agence GSB-DIJON-2.</p>
+				<ul>
+					<li>Contrôleur de domaine <strong>Active Directory</strong> (domaine GSB-DIJON-2.coop)</li>
+					<li>Services <strong>DHCP</strong> (étendue 192.168.227.101–104) et <strong>DNS</strong> intégré AD</li>
+					<li>Création d'UO, groupes, utilisateurs et <strong>GPO</strong></li>
+					<li>Dossiers partagés (repperso$, P_COMMUN, P_ECHANGE) et scripts NETLOGON</li>
+				</ul>
+				<div class="comp-tags">
+					<span class="ctag c1">C1 — Gérer le patrimoine informatique</span>
+					<span class="ctag c5">C5 — Mettre à disposition un service</span>
+				</div>
+			</div>
+		</div>
+
+		<!-- HAProxy + Nagios -->
+		<div class="acc open">
+			<div class="acc-hd" onclick="tog(this)">
+				<span class="bdg bdg-ap">AP GSB — Fiche E6</span>
+				<span class="bdg bdg-star">⭐ Oral E6</span>
+				<span class="title">HAProxy (Load Balancing) + Nagios (Supervision)</span>
+				<span class="meta">Nov. – Déc. 2025</span>
+				<span class="acc-arrow">▾</span>
+			</div>
+			<div class="acc-bd">
+				<p>Deux missions GSB faisant l'objet des fiches E6 officielles : répartition de charge web et supervision de l'infrastructure.</p>
+				<ul>
+					<li><strong>HAProxy</strong> (10.69.2.3) : load balancer Round Robin 50/50 entre SRVWEBSSH et SRVWEBSSH2 — DNS Dnsmasq → gsb-dijon-2-web.com</li>
+					<li><strong>Nagios</strong> (10.69.2.4) : supervision CPU, RAM, disque, HTTP via NRPE (Linux) et NSClient++ (Windows)</li>
+					<li>Cibles supervisées : SRVWEBSSH, SRVWEBSSH2, SRVHAPROXY, WINSRVAD-DIJON</li>
+				</ul>
+				<div class="comp-tags">
+					<span class="ctag c1">C1 — Gérer le patrimoine informatique</span>
+					<span class="ctag c2">C2 — Répondre aux incidents</span>
+					<span class="ctag c4">C4 — Travailler en mode projet</span>
+					<span class="ctag c5">C5 — Mettre à disposition un service</span>
+				</div>
+			</div>
+		</div>
+
+		<!-- GLPI / OCS -->
+		<div class="acc">
+			<div class="acc-hd" onclick="tog(this)">
+				<span class="bdg bdg-tp">TP</span>
+				<span class="title">Gestion de parc &amp; Ticketing — GLPI + OCS Inventory NG</span>
+				<span class="meta">Janv. 2026</span>
+				<span class="acc-arrow">▾</span>
+			</div>
+			<div class="acc-bd">
+				<p>Déploiement d'une solution ITSM complète pour la section BTS SIO du Lycée Sidoine Apollinaire.</p>
+				<ul>
+					<li>Stack LAMP (Debian 12) + <strong>GLPI 10.0.14</strong> + plugin OCSNG 2.0.5</li>
+					<li><strong>OCS Inventory NG</strong> : agents sur postes Windows → remontée automatique du parc (matériel + logiciels)</li>
+					<li>Entités : BTS SIO &gt; Salles B-405, B-406, B-407</li>
+					<li>Profils : Étudiant (ticket seul) / Enseignant (vue entité) / Technicien (gestion complète)</li>
+					<li>Cycle de vie des tickets : Création → Attribution → En Attente → Résolution → Clôture</li>
+				</ul>
+				<div class="comp-tags">
+					<span class="ctag c1">C1 — Gérer le patrimoine informatique</span>
+					<span class="ctag c2">C2 — Répondre aux incidents</span>
+					<span class="ctag c5">C5 — Mettre à disposition un service</span>
+				</div>
+			</div>
+		</div>
+
+		<!-- IPFire -->
+		<div class="acc">
+			<div class="acc-hd" onclick="tog(this)">
+				<span class="bdg bdg-ap">AP GSB</span>
+				<span class="title">Pare-Feu IPFire — Filtrage, Logs, Redirection</span>
+				<span class="meta">2025</span>
+				<span class="acc-arrow">▾</span>
+			</div>
+			<div class="acc-bd">
+				<ul>
+					<li>Filtrage de contenu avec <strong>blacklist</strong> (Université de Toulouse) : drogue, malware, porn, social networks…</li>
+					<li>Proxy transparent et suivi des <strong>logs</strong> de navigation</li>
+					<li>Redirections NAT : RDP WAN → LAN, HTTP/SSH WAN → DMZ</li>
+				</ul>
+				<div class="comp-tags">
+					<span class="ctag c1">C1 — Gérer le patrimoine informatique</span>
+					<span class="ctag c2">C2 — Répondre aux incidents</span>
+				</div>
+			</div>
+		</div>
+
+		<!-- Cisco HSRP/RIP -->
+		<div class="acc">
+			<div class="acc-hd" onclick="tog(this)">
+				<span class="bdg bdg-tp">TP Cisco</span>
+				<span class="title">Infrastructure Cisco — Routage dynamique, HSRP, RIP</span>
+				<span class="meta">2025/2026</span>
+				<span class="acc-arrow">▾</span>
+			</div>
+			<div class="acc-bd">
+				<ul>
+					<li>Mise en place de <strong>HSRP/VRRP</strong> : adresse IP virtuelle partagée entre routeurs pour la haute disponibilité</li>
+					<li>Routage dynamique avec <strong>RIP</strong> et <strong>OSPF</strong> entre routeurs Cisco</li>
+				</ul>
+				<div class="comp-tags">
+					<span class="ctag c1">C1 — Gérer le patrimoine informatique</span>
+					<span class="ctag c5">C5 — Mettre à disposition un service</span>
+				</div>
+			</div>
+		</div>
+
+		<!-- Cisco VLAN -->
+		<div class="acc">
+			<div class="acc-hd" onclick="tog(this)">
+				<span class="bdg bdg-tp">TP Cisco</span>
+				<span class="title">Infrastructure Cisco — VLANs, STP, Agrégation de liens</span>
+				<span class="meta">2025/2026</span>
+				<span class="acc-arrow">▾</span>
+			</div>
+			<div class="acc-bd">
+				<ul>
+					<li>Création et configuration de <strong>VLANs</strong> avec routage inter-VLANs</li>
+					<li><strong>Spanning Tree Protocol (STP)</strong> pour éviter les boucles réseau</li>
+					<li><strong>EtherChannel</strong> (agrégation de liens) pour augmenter la bande passante entre switchs</li>
+				</ul>
+				<div class="comp-tags">
+					<span class="ctag c1">C1 — Gérer le patrimoine informatique</span>
+					<span class="ctag c5">C5 — Mettre à disposition un service</span>
+				</div>
+			</div>
+		</div>
+
+		<hr class="sep"/>
+
+		<!-- ════════════════════════════════════
+		     3 PROJETS DÉTAILLÉS
+		════════════════════════════════════ -->
+		<header class="major"><h2>Projets présentés à l'oral E6</h2></header>
+
+		<!-- ── DETAIL 1 : WALDEN ── -->
+		<div class="oral-detail">
+			<p class="sec-lbl">Projet 1 / 3</p>
+			<span class="bdg bdg-st">Stage 1ère année</span>
+			<span class="bdg bdg-star">⭐ Oral E6</span>
+			<h3 style="margin:.7em 0 .2em;">Stage — Walden Digital</h3>
+			<p style="opacity:.6;font-size:.88em;margin-bottom:1.2em;">19 mai – 27 juin 2025 · Clermont-Ferrand · Tuteur : équipe support Walden Digital</p>
+
+			<p class="sec-lbl">Présentation de l'entreprise</p>
+			<p>Walden Digital est la branche IT du <strong>Walden Group</strong>, groupe européen spécialisé dans le transport et la logistique pharmaceutique. Le groupe comprend 5 entités : Movianto (logistique), Eurotranspharma (transport EU), Transpharma International (flux internationaux), Ciblex et Relais Colis. Walden Digital assure le support technique, la maintenance des infrastructures IT et le développement d'outils numériques pour l'ensemble du groupe depuis Clermont-Ferrand et Moussy-le-Neuf.</p>
+
+			<p class="sec-lbl">Organisation du service support</p>
+			<p>Le service support gère les incidents de niveau 1 via <strong>Zendesk</strong> (tickets). Les techniciens interviennent en télémaintenance (TeamViewer) ou sur site. Chaque technicien a une spécialité (réseau, mobilité, imprimante). Les procédures sont documentées sur <strong>Bizzmine</strong>. Réunion hebdomadaire de suivi chaque jeudi.</p>
+
+			<p class="sec-lbl">Missions réalisées</p>
+
+			<div class="sacc open">
+				<div class="sacc-hd" onclick="stog(this)">
+					<span class="mn">Mission 1</span><h4>Déploiement de postes Windows 11</h4><span class="sacc-arr">▾</span>
+				</div>
+				<div class="sacc-bd">
+					<p>Déploiement de postes HP sous Windows 11 à partir d'une image système pré-configurée. Étapes post-installation :</p>
+					<ul>
+						<li>Configuration du mot de passe administrateur local (<strong>LAPS</strong>)</li>
+						<li>Activation de Windows + mises à jour de sécurité</li>
+						<li>Installation de <strong>Malwarebytes</strong></li>
+						<li>Activation du chiffrement <strong>BitLocker</strong></li>
+						<li>Intégration au domaine <strong>Active Directory</strong> avec nomenclature de nommage précise</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="sacc">
+				<div class="sacc-hd" onclick="stog(this)">
+					<span class="mn">Mission 2</span><h4>Configuration de PDA et équipements mobiles</h4><span class="sacc-arr">▾</span>
+				</div>
+				<div class="sacc-bd">
+					<p>Configuration de terminaux mobiles (Zebra TC25, M3 Mobile) utilisés sur les quais logistiques Movianto/Ciblex :</p>
+					<ul>
+						<li>Enrôlement via <strong>SOTI MobiControl</strong> (MDM) : configuration, déploiement d'apps, surveillance temps réel</li>
+						<li>Connexion Wi-Fi sécurisée via <strong>NAC</strong> (Network Access Control)</li>
+						<li>En cas de panne : envoi en réparation, réenrôlement à réception</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="sacc">
+				<div class="sacc-hd" onclick="stog(this)">
+					<span class="mn">Mission 3</span><h4>Interventions sur sites &amp; gestion de tickets</h4><span class="sacc-arr">▾</span>
+				</div>
+				<div class="sacc-bd">
+					<ul>
+						<li>Interventions sur sites Movianto (Sarlièves, Quantum, Siège) avec les techniciens</li>
+						<li>Remplacement et reconfiguration d'imprimantes industrielles <strong>SATO CL4NX</strong></li>
+						<li>Tickets résolus : configuration DNS manuelle incorrecte (restauration IP auto), conflits VPN, GPO bloquant les mises à jour Windows, lenteurs matérielles</li>
+						<li>Supervision réseau multi-sites via <strong>Centreon</strong></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="comp-tags" style="margin-top:1.2em;">
+				<span class="ctag c1">C1 — Gérer le patrimoine informatique</span>
+				<span class="ctag c2">C2 — Répondre aux incidents</span>
+				<span class="ctag c6">C6 — Développement professionnel</span>
+			</div>
+		</div>
+
+		<!-- ── DETAIL 2 : FOG ── -->
+		<div class="oral-detail">
+			<p class="sec-lbl">Projet 2 / 3</p>
+			<span class="bdg bdg-st">Stage 2ème année</span>
+			<span class="bdg bdg-star">⭐ Oral E6</span>
+			<h3 style="margin:.7em 0 .2em;">Stage — Déploiement de postes (FOG Project)</h3>
+			<p style="opacity:.6;font-size:.88em;margin-bottom:1.2em;">23 fév. – 3 avr. 2026 · Lycée Sidoine Apollinaire, Clermont-Ferrand · Binôme : Yanis Noël · Tuteur : M. Rochon</p>
+
+			<p class="sec-lbl">Contexte</p>
+			<p>Stage de 6 semaines. Mission : déployer une image <strong>Windows 11 standardisée</strong> sur ~60 postes dans 3 salles informatiques (S-402, S-405, S-406) via <strong>FOG Project</strong> (clonage réseau PXE/Multicast). PC : machines TERRA DDR5, 1 To.</p>
+
+			<p class="sec-lbl">Architecture de déploiement</p>
+			<div class="infra">
+<span class="z">Réseau dédié — 192.168.10.0/24</span>
+  Serveur FOG     <span class="ip">192.168.10.12</span>  — VM Debian 11, PXE/Multicast
+  Windows Server  <span class="ip">192.168.10.20</span>  — DHCP (opt. 066 → FOG, opt. 067 → ipxe.efi)
+  Routeur Cisco   <span class="ip">192.168.10.254</span> — Passerelle
+  Plage DHCP      <span class="ip">192.168.10.40–100</span> — Postes clients PXE
+			</div>
+
+			<div class="sacc open">
+				<div class="sacc-hd" onclick="stog(this)">
+					<span class="mn">Phase 1</span><h4>Analyse &amp; planification (GANTT)</h4><span class="sacc-arr">▾</span>
+				</div>
+				<div class="sacc-bd">Inventaire matériel, choix de FOG Project v1.5.10, élaboration d'un <strong>diagramme de Gantt</strong> sur 6 semaines. Planification salle par salle selon les créneaux de disponibilité (cours en cours dans les salles).</div>
+			</div>
+			<div class="sacc">
+				<div class="sacc-hd" onclick="stog(this)">
+					<span class="mn">Phase 2</span><h4>Infrastructure réseau + serveur FOG</h4><span class="sacc-arr">▾</span>
+				</div>
+				<div class="sacc-bd"><ul>
+					<li>Installation FOG sur VM Debian 11 (IP statique 192.168.10.12)</li>
+					<li>Config DHCP Windows Server : option 066 → 192.168.10.12, option 067 → ipxe.efi</li>
+					<li>Configuration switch + routeur Cisco pour le réseau de déploiement</li>
+				</ul></div>
+			</div>
+			<div class="sacc">
+				<div class="sacc-hd" onclick="stog(this)">
+					<span class="mn">Phase 3</span><h4>PC Master + Sysprep</h4><span class="sacc-arr">▾</span>
+				</div>
+				<div class="sacc-bd">Installation Windows 11 + logiciels (Packet Tracer, Wireshark, VS Code, VMware, WAMP…) sur le PC Master. Généralisation via <strong>Sysprep</strong> (OOBE + Généraliser) pour réinitialiser le SID avant clonage.</div>
+			</div>
+			<div class="sacc">
+				<div class="sacc-hd" onclick="stog(this)">
+					<span class="mn">Phase 4</span><h4>Capture (~70 Go) + tests Unicast</h4><span class="sacc-arr">▾</span>
+				</div>
+				<div class="sacc-bd">Capture PXE du disque entier (~70 Go) via FOG. Tests Unicast sur 1-2 postes pour valider drivers, logiciels et nommage avant déploiement massif.</div>
+			</div>
+			<div class="sacc">
+				<div class="sacc-hd" onclick="stog(this)">
+					<span class="mn">Phase 5</span><h4>Déploiement Multicast — 3 salles</h4><span class="sacc-arr">▾</span>
+				</div>
+				<div class="sacc-bd"><ul>
+					<li>Config BIOS de chaque PC : boot UEFI LAN prioritaire, Network Stack IPv4, Secure Boot désactivé</li>
+					<li>Enregistrement via Quick Registration and Inventory FOG</li>
+					<li>Déploiement <strong>Multicast</strong> salle par salle (~20 postes simultanément)</li>
+					<li>Post-déploiement : intégration au domaine AD du lycée</li>
+				</ul></div>
+			</div>
+			<div class="sacc">
+				<div class="sacc-hd" onclick="stog(this)">
+					<span class="mn">Phase 6</span><h4>Supervision — Veyon &amp; Zabbix</h4><span class="sacc-arr">▾</span>
+				</div>
+				<div class="sacc-bd"><ul>
+					<li><strong>Veyon</strong> : contrôle à distance des postes élèves (partage écran, verrouillage)</li>
+					<li><strong>Zabbix</strong> : monitoring infrastructure réseau du lycée (alertes, services)</li>
+				</ul></div>
+			</div>
+
+			<div class="comp-tags" style="margin-top:1.2em;">
+				<span class="ctag c1">C1 — Gérer le patrimoine informatique</span>
+				<span class="ctag c4">C4 — Travailler en mode projet</span>
+				<span class="ctag c5">C5 — Mettre à disposition un service</span>
+				<span class="ctag c6">C6 — Développement professionnel</span>
+			</div>
+		</div>
+
+		<!-- ── DETAIL 3 : HAPROXY + NAGIOS ── -->
+		<div class="oral-detail">
+			<p class="sec-lbl">Projet 3 / 3</p>
+			<span class="bdg bdg-ap">AP GSB — Fiche E6</span>
+			<span class="bdg bdg-star">⭐ Oral E6</span>
+			<h3 style="margin:.7em 0 .2em;">HAProxy — Répartition de charge &amp; Nagios — Supervision</h3>
+			<p style="opacity:.6;font-size:.88em;margin-bottom:1.2em;">Nov. – Déc. 2025 · Agence GSB-DIJON-2 · Binôme : Yanis Noël</p>
+
+			<p class="sec-lbl">Infrastructure GSB-DIJON-2</p>
+			<div class="infra">
+<span class="z">LAN — 192.168.227.96/28</span>
+  WINSRVAD-DIJON  <span class="ip">192.168.227.97</span>   — AD/DHCP/DNS
+  SRVNAGIOS       <span class="ip">192.168.227.98</span>   — Supervision
+  SRVOCSGLPI      <span class="ip">192.168.227.99</span>   — Inventaire/GLPI
+  PC1, PC2        <span class="ip">192.168.227.101–104</span> — DHCP
+
+<span class="z">DMZ — 10.69.2.0/24</span>
+  SRVHAPROXY      <span class="ip">10.69.2.3</span>   — Load balancer (frontend)
+  SRVWEBSSH       <span class="ip">10.69.2.1</span>   — Serveur web Apache2 (backend 1)
+  SRVWEBSSH2      <span class="ip">10.69.2.2</span>   — Serveur web Apache2 (backend 2)
+  IFFIRE          <span class="ip">10.69.2.254</span> — Pare-feu (DMZ) / <span class="ip">192.168.227.109</span> (LAN)
+			</div>
+
+			<div class="sacc open">
+				<div class="sacc-hd" onclick="stog(this)">
+					<span class="mn">Mission 3</span><h4>HAProxy — Répartition de charge web (03/11 – 18/11/2025)</h4><span class="sacc-arr">▾</span>
+				</div>
+				<div class="sacc-bd">
+					<p><strong>Objectif :</strong> Assurer la haute disponibilité du site web GSB en répartissant les requêtes HTTP entre deux serveurs.</p>
+					<ul>
+						<li>Installation de <strong>HAProxy</strong> sur VM Debian dans la DMZ (SRVHAPROXY, 10.69.2.3)</li>
+						<li><strong>Frontend</strong> : écoute sur port 80 de l'IP HAProxy</li>
+						<li><strong>Backend</strong> : algorithme <em>roundrobin</em> 50/50 entre SRVWEBSSH et SRVWEBSSH2</li>
+						<li>Résolution DNS via <strong>Dnsmasq</strong> : gsb-dijon-2-web.com → 10.69.2.3</li>
+						<li>Tests de validation : alternance visible entre les deux serveurs à chaque requête</li>
+						<li>Config avancée : pondération pour simuler un serveur moins puissant</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="sacc">
+				<div class="sacc-hd" onclick="stog(this)">
+					<span class="mn">Mission 4</span><h4>Nagios — Supervision infrastructure (01/12 – 16/12/2025)</h4><span class="sacc-arr">▾</span>
+				</div>
+				<div class="sacc-bd">
+					<p><strong>Objectif :</strong> Surveiller l'état de santé de l'ensemble des équipements de l'agence en temps réel.</p>
+					<ul>
+						<li>Installation de <strong>Nagios</strong> sur VM Debian (192.168.227.98)</li>
+						<li>Protocoles : <strong>NRPE</strong> pour les hôtes Linux, <strong>NSClient++</strong> pour Windows Server, ICMP (ping)</li>
+						<li>Ressources supervisées : charge CPU, utilisation RAM, espace disque, service HTTP</li>
+						<li>Seuils configurés : <em>Warning</em> et <em>Critical</em> par indicateur</li>
+						<li>Hôtes surveillés : SRVWEBSSH, SRVWEBSSH2, SRVHAPROXY, WINSRVAD-DIJON</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="comp-tags" style="margin-top:1.2em;">
+				<span class="ctag c1">C1 — Gérer le patrimoine informatique</span>
+				<span class="ctag c2">C2 — Répondre aux incidents</span>
+				<span class="ctag c4">C4 — Travailler en mode projet</span>
+				<span class="ctag c5">C5 — Mettre à disposition un service</span>
+			</div>
+		</div>
+
+	</div>
+	</section>
+	</div>
+
+	<footer id="footer">
+		<div class="inner">
+			<ul class="icons">
+				<li><a href="https://github.com/yohan-cta/portfolio" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+			</ul>
+			<ul class="copyright"><li>&copy; CERTA Yohan — BTS SIO SISR 2026</li></ul>
+		</div>
+	</footer>
+
+</div>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+function tog(hd){ hd.parentElement.classList.toggle('open'); }
+function stog(hd){ hd.parentElement.classList.toggle('open'); }
+</script>
+</body>
 </html>
