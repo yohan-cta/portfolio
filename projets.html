@@ -73,13 +73,17 @@
 		.gsb-ctx { background:rgba(0,214,143,.04); border:1px solid rgba(0,214,143,.15);
 			border-radius:8px; padding:1.4em 1.6em; margin-bottom:2em; }
 		.gsb-ctx h3 { margin-top:0; color:#00d68f; }
-		.gsb-schema { max-width:100%; border-radius:6px; border:1px solid rgba(255,255,255,.1);
+		.gsb-schema { max-width:600px; width:100%; border-radius:6px; border:1px solid rgba(255,255,255,.1);
 			margin-top:1em; display:block; }
 
 		/* ── Oral highlight ── */
 		.oral-detail { border-left:3px solid #00d68f; padding-left:1.4em; margin-bottom:2.5em; }
 
-		hr.sep { border:none; border-top:1px solid rgba(255,255,255,.07); margin:2.5em 0; }
+		.dl-btn { display:inline-flex; align-items:center; gap:.5em;
+			background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.2);
+			color:#fff; padding:.5em 1.1em; border-radius:4px; text-decoration:none;
+			font-size:.82em; font-weight:600; transition:background .2s; margin-top:.8em; }
+		.dl-btn:hover { background:rgba(255,255,255,.15); color:#fff; }
 	</style>
 </head>
 <body class="is-preload">
@@ -260,7 +264,7 @@
 		<!-- HAProxy + Nagios -->
 		<div class="acc open">
 			<div class="acc-hd" onclick="tog(this)">
-				<span class="bdg bdg-ap">AP GSB — Fiche E6</span>
+				<span class="bdg bdg-ap">AP GSB</span>
 				<span class="bdg bdg-star">⭐ Oral E6</span>
 				<span class="title">HAProxy (Load Balancing) + Nagios (Supervision)</span>
 				<span class="meta">Nov. – Déc. 2025</span>
@@ -446,6 +450,7 @@
 				<span class="ctag c5">C5 — Mettre à disposition un service</span>
 				<span class="ctag c6">C6 — Développement professionnel</span>
 			</div>
+			<a href="Rapport-Stage-TS1.pdf" download class="dl-btn">⬇ Télécharger le rapport de stage</a>
 		</div>
 
 		<!-- ── DETAIL 2 : FOG ── -->
@@ -524,12 +529,13 @@
 				<span class="ctag c5">C5 — Mettre à disposition un service</span>
 				<span class="ctag c6">C6 — Développement professionnel</span>
 			</div>
+			<a href="Rapport-Stage-TS2.pdf" download class="dl-btn">⬇ Télécharger le rapport de stage</a>
 		</div>
 
 		<!-- ── DETAIL 3 : HAPROXY + NAGIOS ── -->
 		<div class="oral-detail">
 			<p class="sec-lbl">Projet 3 / 3</p>
-			<span class="bdg bdg-ap">AP GSB — Fiche E6</span>
+			<span class="bdg bdg-ap">AP GSB</span>
 			<span class="bdg bdg-star">⭐ Oral E6</span>
 			<h3 style="margin:.7em 0 .2em;">HAProxy — Répartition de charge &amp; Nagios — Supervision</h3>
 			<p style="opacity:.6;font-size:.88em;margin-bottom:1.2em;">Nov. – Déc. 2025 · Agence GSB-DIJON-2 · Binôme : Yanis Noël</p>
