@@ -83,6 +83,28 @@ background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.2);
 color:#fff; padding:.5em 1.1em; border-radius:4px; text-decoration:none;
 font-size:.82em; font-weight:600; transition:background .2s; margin-top:.8em; margin-right:.5em; }
 .dl-btn:hover { background:rgba(255,255,255,.15); color:#fff; }
+/* ── Nagios capture ── */
+.nagios-cap {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,.12);
+  margin: 1em 0 .5em;
+  display: block;
+}
+.cap-legend {
+  font-family: monospace;
+  font-size: .72em;
+  opacity: .5;
+  text-align: center;
+  margin-bottom: 1em;
+}
+/* ── Status badges ── */
+.st-ok  { display:inline-block; background:#2e7d32; color:#fff; font-size:.7em; font-weight:700;
+          padding:.1em .5em; border-radius:3px; font-family:monospace; }
+.st-cri { display:inline-block; background:#c62828; color:#fff; font-size:.7em; font-weight:700;
+          padding:.1em .5em; border-radius:3px; font-family:monospace; }
+.st-war { display:inline-block; background:#f9a825; color:#000; font-size:.7em; font-weight:700;
+          padding:.1em .5em; border-radius:3px; font-family:monospace; }
 </style>
 </head>
 <body class="is-preload">
@@ -260,21 +282,47 @@ font-size:.82em; font-weight:600; transition:background .2s; margin-top:.8em; ma
   </div>
 </div>
 
-<!-- HAProxy + Nagios -->
+<!-- HAProxy — séparé, sans étoile oral -->
+<div class="acc">
+  <div class="acc-hd" onclick="tog(this)">
+    <span class="bdg bdg-ap">AP GSB</span>
+    <span class="title">HAProxy — Répartition de charge (Load Balancing)</span>
+    <span class="meta">03 nov. – 18 nov. 2025</span>
+    <span class="acc-arrow">▾</span>
+  </div>
+  <div class="acc-bd">
+    <p>Mission 3 GSB : assurer la haute disponibilité du site web de l'agence en répartissant les requêtes HTTP entre deux serveurs Apache.</p>
+    <ul>
+      <li>Installation de <strong>HAProxy</strong> sur VM Debian dans la DMZ (SRVHAPROXY — 10.69.2.3)</li>
+      <li><strong>Frontend</strong> : écoute port 80, <strong>Backend</strong> : algorithme <em>roundrobin</em> 50/50 entre SRVWEBSSH et SRVWEBSSH2</li>
+      <li>Résolution DNS via <strong>Dnsmasq</strong> : gsb-dijon-2-web.com → 10.69.2.3</li>
+      <li>Tests de validation : alternance visible entre les deux serveurs à chaque requête</li>
+      <li>Config avancée : pondération pour simuler un serveur moins puissant</li>
+    </ul>
+    <div class="comp-tags">
+      <span class="ctag c1">C1 — Gérer le patrimoine informatique</span>
+      <span class="ctag c5">C5 — Mettre à disposition un service</span>
+      <span class="ctag c6">C6 — Développement professionnel</span>
+    </div>
+  </div>
+</div>
+
+<!-- Nagios — avec étoile oral -->
 <div class="acc open">
   <div class="acc-hd" onclick="tog(this)">
     <span class="bdg bdg-ap">AP GSB</span>
     <span class="bdg bdg-star">&#11088; Oral E6</span>
-    <span class="title">HAProxy (Load Balancing) + Nagios (Supervision)</span>
-    <span class="meta">Nov. – Déc. 2025</span>
+    <span class="title">Nagios — Supervision de l'infrastructure</span>
+    <span class="meta">01 déc. – 16 déc. 2025</span>
     <span class="acc-arrow">▾</span>
   </div>
   <div class="acc-bd">
-    <p>Deux missions GSB faisant l'objet des fiches E6 officielles : répartition de charge web et supervision de l'infrastructure.</p>
+    <p>Mission 4 GSB : déployer une solution de supervision pour surveiller en temps réel l'état de santé des serveurs de l'agence (CPU, RAM, disque, service web).</p>
     <ul>
-      <li><strong>HAProxy</strong> (10.69.2.3) : load balancer Round Robin 50/50 entre SRVWEBSSH et SRVWEBSSH2 — DNS Dnsmasq → gsb-dijon-2-web.com</li>
-      <li><strong>Nagios</strong> (10.69.2.4) : supervision CPU, RAM, disque, HTTP via NRPE (Linux) et NSClient++ (Windows)</li>
-      <li>Cibles supervisées : SRVWEBSSH, SRVWEBSSH2, SRVHAPROXY, WINSRVAD-DIJON</li>
+      <li>Installation de <strong>Nagios</strong> sur VM Debian (192.168.227.98)</li>
+      <li>Agents <strong>NRPE</strong> sur les hôtes Linux, <strong>NSClient++</strong> sur Windows Server, ICMP (ping)</li>
+      <li>4 hôtes supervisés : SRVHAPROXY, SRVWEBSSH, SRVWEBSSH2, WINSRVAD-DIJON</li>
+      <li>Seuils Warning / Critical configurés par indicateur — alertes en temps réel</li>
     </ul>
     <div class="comp-tags">
       <span class="ctag c1">C1 — Gérer le patrimoine informatique</span>
@@ -379,7 +427,7 @@ font-size:.82em; font-weight:600; transition:background .2s; margin-top:.8em; ma
 <hr class="sep"/>
 
 <!-- ════════════════════════════════════
-     3 PROJETS DÉTAILLÉS
+     3 PROJETS DÉTAILLÉS ORAL E6
 ════════════════════════════════════ -->
 <header class="major"><h2>Projets présentés à l'oral E6</h2></header>
 
@@ -449,8 +497,6 @@ font-size:.82em; font-weight:600; transition:background .2s; margin-top:.8em; ma
     <span class="ctag c5">C5 — Mettre à disposition un service</span>
     <span class="ctag c6">C6 — Développement professionnel</span>
   </div>
-
-  <!-- ✅ Modifié : target="_blank" au lieu de download -->
   <a href="Rapport-Stage-TS1.pdf" target="_blank" class="dl-btn">&#128196; Voir le rapport de stage</a>
 </div>
 
@@ -535,64 +581,82 @@ font-size:.82em; font-weight:600; transition:background .2s; margin-top:.8em; ma
     <span class="ctag c5">C5 — Mettre à disposition un service</span>
     <span class="ctag c6">C6 — Développement professionnel</span>
   </div>
-
-  <!-- ✅ Rapport en nouvel onglet + bouton GANTT -->
   <a href="Rapport-Stage-TS2.pdf" target="_blank" class="dl-btn">&#128196; Voir le rapport de stage</a>
   <a href="Gantt.xlsx" target="_blank" class="dl-btn">&#128202; Ouvrir le GANTT</a>
 </div>
 
-<!-- ── DETAIL 3 : HAPROXY + NAGIOS ── -->
+<!-- ── DETAIL 3 : NAGIOS ── -->
 <div class="oral-detail">
   <p class="sec-lbl">Projet 3 / 3</p>
   <span class="bdg bdg-ap">AP GSB</span>
   <span class="bdg bdg-star">&#11088; Oral E6</span>
-  <h3 style="margin:.7em 0 .2em;">HAProxy — Répartition de charge &amp; Nagios — Supervision</h3>
-  <p style="opacity:.6;font-size:.88em;margin-bottom:1.2em;">Nov. – Déc. 2025 · Agence GSB-DIJON-2 · Binôme : Yanis Noël</p>
+  <h3 style="margin:.7em 0 .2em;">Nagios — Supervision de l'infrastructure GSB-DIJON-2</h3>
+  <p style="opacity:.6;font-size:.88em;margin-bottom:1.2em;">01 déc. – 16 déc. 2025 · Agence GSB-DIJON-2 · Lycée Sidoine Apollinaire · Binôme : Yanis Noël</p>
 
-  <p class="sec-lbl">Infrastructure GSB-DIJON-2</p>
+  <p class="sec-lbl">Contexte et besoin</p>
+  <p>Suite à des problèmes techniques récurrents dans les agences du groupe GSB, une <strong>note de service de la Direction (12/10/2025)</strong> demande la mise en place d'urgence d'une solution de supervision dans la DMZ de chaque agence. L'objectif : surveiller en temps réel l'état de santé des serveurs (serveur web en priorité) et remonter des alertes automatiques en cas d'anomalie.</p>
+
+  <p class="sec-lbl">Infrastructure supervisée</p>
   <div class="infra">
-    <span class="z">LAN — 192.168.227.96/28</span>
-    WINSRVAD-DIJON <span class="ip">192.168.227.97</span> — AD/DHCP/DNS
-    SRVNAGIOS <span class="ip">192.168.227.98</span> — Supervision
-    SRVOCSGLPI <span class="ip">192.168.227.99</span> — Inventaire/GLPI
-    PC1, PC2 <span class="ip">192.168.227.101–104</span> — DHCP
-    <span class="z">DMZ — 10.69.2.0/24</span>
-    SRVHAPROXY <span class="ip">10.69.2.3</span> — Load balancer (frontend)
-    SRVWEBSSH <span class="ip">10.69.2.1</span> — Serveur web Apache2 (backend 1)
-    SRVWEBSSH2 <span class="ip">10.69.2.2</span> — Serveur web Apache2 (backend 2)
-    IFFIRE <span class="ip">10.69.2.254</span> — Pare-feu (DMZ) / <span class="ip">192.168.227.109</span> (LAN)
+    <span class="z">Serveur Nagios</span>
+    SRVNAGIOS <span class="ip">192.168.227.98</span> — VM Debian 11, interface web Nagios Core
+
+    <span class="z">Hôtes supervisés</span>
+    SRVHAPROXY <span class="ip">10.69.2.3</span> — Load balancer DMZ (NRPE)
+    WEBSRV1 <span class="ip">10.69.2.1</span> — Serveur web Apache2 backend 1 (NRPE)
+    WEBSRV2 <span class="ip">10.69.2.2</span> — Serveur web Apache2 backend 2 (NRPE)
+    WINSRV <span class="ip">192.168.227.97</span> — Windows Server 2019 AD/DHCP/DNS (NSClient++)
   </div>
 
   <div class="sacc open">
     <div class="sacc-hd" onclick="stog(this)">
-      <span class="mn">Mission 3</span><h4>HAProxy — Répartition de charge web (03/11 – 18/11/2025)</h4><span class="sacc-arr">▾</span>
+      <span class="mn">Étape 1</span><h4>Installation de Nagios Core sur Debian</h4><span class="sacc-arr">▾</span>
     </div>
     <div class="sacc-bd">
-      <p><strong>Objectif :</strong> Assurer la haute disponibilité du site web GSB en répartissant les requêtes HTTP entre deux serveurs.</p>
+      <p>Déploiement de <strong>Nagios Core</strong> sur VM Debian 11 (SRVNAGIOS — 192.168.227.98) avec stack Apache + PHP pour l'interface web d'administration. Configuration du compte administrateur Nagios et vérification de l'accès à l'interface depuis les postes clients du LAN.</p>
+    </div>
+  </div>
+
+  <div class="sacc">
+    <div class="sacc-hd" onclick="stog(this)">
+      <span class="mn">Étape 2</span><h4>Agents NRPE — supervision des hôtes Linux</h4><span class="sacc-arr">▾</span>
+    </div>
+    <div class="sacc-bd">
+      <p>Installation du plugin <strong>NRPE</strong> (Nagios Remote Plugin Executor) sur chaque serveur Linux (SRVHAPROXY, WEBSRV1, WEBSRV2). Le démon NRPE écoute les requêtes Nagios et exécute les plugins locaux pour mesurer :</p>
       <ul>
-        <li>Installation de <strong>HAProxy</strong> sur VM Debian dans la DMZ (SRVHAPROXY, 10.69.2.3)</li>
-        <li><strong>Frontend</strong> : écoute sur port 80 de l'IP HAProxy</li>
-        <li><strong>Backend</strong> : algorithme <em>roundrobin</em> 50/50 entre SRVWEBSSH et SRVWEBSSH2</li>
-        <li>Résolution DNS via <strong>Dnsmasq</strong> : gsb-dijon-2-web.com → 10.69.2.3</li>
-        <li>Tests de validation : alternance visible entre les deux serveurs à chaque requête</li>
-        <li>Config avancée : pondération pour simuler un serveur moins puissant</li>
+        <li><strong>Charge processeur</strong> — seuil Warning : 80%, Critical : 95%</li>
+        <li><strong>Utilisation RAM</strong> — seuil Warning : 70%, Critical : 90%</li>
+        <li><strong>Espace disque</strong> — seuil Warning : 75%, Critical : 90%</li>
+        <li><strong>Service Web (HTTP)</strong> — vérification disponibilité Apache2 sur port 80</li>
       </ul>
     </div>
   </div>
 
   <div class="sacc">
     <div class="sacc-hd" onclick="stog(this)">
-      <span class="mn">Mission 4</span><h4>Nagios — Supervision infrastructure (01/12 – 16/12/2025)</h4><span class="sacc-arr">▾</span>
+      <span class="mn">Étape 3</span><h4>NSClient++ — supervision du Windows Server</h4><span class="sacc-arr">▾</span>
     </div>
     <div class="sacc-bd">
-      <p><strong>Objectif :</strong> Surveiller l'état de santé de l'ensemble des équipements de l'agence en temps réel.</p>
+      <p>Installation de <strong>NSClient++</strong> sur WINSRV (Windows Server 2019 — AD/DHCP/DNS). L'agent expose les métriques Windows à Nagios via le protocole NRPE/check_nt : surveillance CPU, RAM et espace disque du contrôleur de domaine.</p>
+    </div>
+  </div>
+
+  <div class="sacc open">
+    <div class="sacc-hd" onclick="stog(this)">
+      <span class="mn">Résultats</span><h4>Tableau de supervision en temps réel</h4><span class="sacc-arr">▾</span>
+    </div>
+    <div class="sacc-bd">
+      <p>L'interface Nagios affiche en temps réel l'état de chaque service sur chaque hôte. La capture ci-dessous montre des états réels avec des alertes actives :</p>
+      <img src="nagios_capture.png" alt="Tableau de supervision Nagios — GSB-DIJON-2" class="nagios-cap"/>
+      <p class="cap-legend">Interface Nagios Core — Supervision des services · GSB-DIJON-2 · 14/01/2026</p>
+      <p>Lecture du tableau :</p>
       <ul>
-        <li>Installation de <strong>Nagios</strong> sur VM Debian (192.168.227.98)</li>
-        <li>Protocoles : <strong>NRPE</strong> pour les hôtes Linux, <strong>NSClient++</strong> pour Windows Server, ICMP (ping)</li>
-        <li>Ressources supervisées : charge CPU, utilisation RAM, espace disque, service HTTP</li>
-        <li>Seuils configurés : <em>Warning</em> et <em>Critical</em> par indicateur</li>
-        <li>Hôtes surveillés : SRVWEBSSH, SRVWEBSSH2, SRVHAPROXY, WINSRVAD-DIJON</li>
+        <li><strong>SRVHAPROXY</strong> — HTTP Service Public : <span class="st-ok">OK</span> — load balancer opérationnel</li>
+        <li><strong>WEBSRV1</strong> — CPU <span class="st-ok">OK</span>, Web <span class="st-ok">OK</span>, Disque <span class="st-ok">OK</span> · RAM : <span class="st-cri">CRITICAL</span> — consommation mémoire dépassant le seuil critique (alerte remontée automatiquement)</li>
+        <li><strong>WEBSRV2</strong> — CPU <span class="st-ok">OK</span>, Web <span class="st-ok">OK</span>, Disque <span class="st-ok">OK</span> · RAM : <span class="st-war">WARNING</span> — mémoire proche du seuil, à surveiller</li>
+        <li><strong>WINSRV</strong> — CPU <span class="st-ok">OK</span>, RAM <span class="st-ok">OK</span>, Disque <span class="st-ok">OK</span> — Windows Server stable</li>
       </ul>
+      <p>Les alertes RAM sur WEBSRV1 et WEBSRV2 démontrent l'utilité concrète de la solution : sans supervision, ces anomalies seraient passées inaperçues jusqu'à une panne complète.</p>
     </div>
   </div>
 
